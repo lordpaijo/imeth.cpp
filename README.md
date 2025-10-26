@@ -30,7 +30,7 @@ Currently there has been only shorthand amount of APIs available. Likely it's du
 #include <imeth/linear/linear.hpp>
 ```
 Imeth itself is just a big chunk of library with tons of modularity. Which you will likely never see it included just by its name (even in the future), since it doesn't have any implementation either. It's just a blob of bunch of headers that you can include in your project.
-Unless someone wants to change this by however they want, it's like that this will stay forever.
+Unless someone wants to change this by however they want, it's likely that this will stay forever.
 ### Example
 Here's a simple example of the APIs usage:
 ```cpp
