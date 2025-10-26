@@ -1,2 +1,0 @@
-/home/paijogoesblue/cosmocc/bin/x86_64-unknown-cosmo-ar qc libimeth.a CMakeFiles/imeth.dir/src/linear.cpp.o CMakeFiles/imeth.dir/src/shape_2d.cpp.o CMakeFiles/imeth.dir/src/shape_3d.cpp.o
-/usr/bin/ranlib libimeth.a

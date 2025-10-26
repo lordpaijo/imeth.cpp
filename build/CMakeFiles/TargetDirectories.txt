@@ -1,8 +1,0 @@
-/home/paijogoesblue/Projects/C-C++/imeth/build/CMakeFiles/imeth.dir
-/home/paijogoesblue/Projects/C-C++/imeth/build/CMakeFiles/imeth_test.dir
-/home/paijogoesblue/Projects/C-C++/imeth/build/CMakeFiles/edit_cache.dir
-/home/paijogoesblue/Projects/C-C++/imeth/build/CMakeFiles/rebuild_cache.dir
-/home/paijogoesblue/Projects/C-C++/imeth/build/CMakeFiles/list_install_components.dir
-/home/paijogoesblue/Projects/C-C++/imeth/build/CMakeFiles/install.dir
-/home/paijogoesblue/Projects/C-C++/imeth/build/CMakeFiles/install/local.dir
-/home/paijogoesblue/Projects/C-C++/imeth/build/CMakeFiles/install/strip.dir

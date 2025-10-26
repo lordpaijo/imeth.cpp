@@ -1,6 +1,0 @@
-/usr/local/lib64/libimeth.a
-/usr/local/include/imeth/linear/linear.hpp
-/usr/local/include/imeth/shape/2D.hpp
-/usr/local/include/imeth/shape/3D.hpp
-/usr/local/lib64/cmake/imeth/imethConfig.cmake
-/usr/local/lib64/cmake/imeth/imethConfig-noconfig.cmake
