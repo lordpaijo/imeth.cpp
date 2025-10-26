@@ -4,12 +4,12 @@ Imeth, or I ❤️ meth, is a simple math library written in C++. It's goal is t
 ### Getting the source
 Clone the repository using git:
 ```sh
-$ git clone https://github.com/lordpaijo/imeth.cpp.git
+$ git clone https://github.com/lordpaijo/imeth.cpp.git imeth
 ```
 ### Building the library
 Build the library using CMake:
 ```sh
-$ cd imeth.cpp
+$ cd imeth
 $ mkdir build
 $ cd build
 $ cmake ..
