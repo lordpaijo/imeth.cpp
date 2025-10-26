@@ -1,0 +1,1 @@
+/home/paijogoesblue/cosmocc/bin/x86_64-unknown-cosmo-c++ -Wl,--dependency-file=CMakeFiles/imeth_test.dir/link.d CMakeFiles/imeth_test.dir/tests/main.cpp.o -o imeth_test  libimeth.a
