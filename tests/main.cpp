@@ -19,15 +19,15 @@ int main() {
 
     auto x1 = LinearEquation::solve_1v(2, 4);
     if (x1)
-        std::cout << "SPL 1 Variable: x = " << *x1 << "\n";
+        std::cout << "Equation 1 Variable: x = " << *x1 << "\n";
     else
-        std::cout << "SPL 1 Variable: No solution\n";
+        std::cout << "Equation 1 Variable: No solution\n";
 
     auto xy = LinearEquation::solve_2v(2, 3, 8, 4, -2, 0);
     if (xy)
-        std::cout << "SPL 2 Variables: x = " << xy->first << ", y = " << xy->second << "\n";
+        std::cout << "Equation 2 Variables: x = " << xy->first << ", y = " << xy->second << "\n";
     else
-        std::cout << "SPL 2 Variables: No solution\n";
+        std::cout << "Equation 2 Variables: No solution\n";
 }
 
 // thank you gpt lmao
