@@ -42,4 +42,4 @@ std::optional<std::pair<double, double>> solve_2v(
   return std::make_pair(x, y);
 }
 
-} // namespace linear
+} // namespace imeth

@@ -1,23 +1,29 @@
 cmake_minimum_required(VERSION 3.15)
 project(imeth LANGUAGES CXX VERSION 1.0.0)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Main library target
+# ======================
+# Main library
+# ======================
 add_library(imeth STATIC
     src/algebra.cpp
+    src/matrix.cpp
     src/shape_2d.cpp
     src/shape_3d.cpp
 )
 
+# Proper include handling (for both build & install)
 target_include_directories(imeth
     PUBLIC
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
 )
 
-# Install targets
+# ======================
+# Installation
+# ======================
 include(GNUInstallDirs)
 
 install(
@@ -38,8 +44,12 @@ install(
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/imeth
 )
 
+# ======================
 # Test executable
+# ======================
 add_executable(imeth_test tests/main.cpp)
+
 target_link_libraries(imeth_test PRIVATE imeth)
 
-# again, thank you gpt...
+# Add include dir for test only
+target_include_directories(imeth_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
