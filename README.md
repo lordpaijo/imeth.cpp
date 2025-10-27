@@ -27,7 +27,7 @@ Currently there has been only shorthand amount of APIs available. Likely it's du
 ```cpp
 #include <imeth/shape/2D.hpp>
 #include <imeth/shape/3D.hpp>
-#include <imeth/linear/linear.hpp>
+#include <imeth/linear/algebra.hpp>
 ```
 Imeth itself is just a big chunk of library with tons of modularity. Which you will likely never see it included just by its name (even in the future), since it doesn't have any implementation either. It's just a blob of bunch of headers that you can include in your project.
 Unless someone wants to change this by however they want, it's likely that this will stay forever.
@@ -35,10 +35,10 @@ Unless someone wants to change this by however they want, it's likely that this 
 Here's a simple example of the APIs usage:
 ```cpp
 int main() {
-    shape_2d::Circle circle(5);
-    shape_2d::Square square(4);
-    shape_3d::Sphere sphere(3);
-    shape_3d::Cube cube(2);
+    imeth::Circle circle(5);
+    imeth::Square square(4);
+    imeth::Sphere sphere(3);
+    imeth::Cube cube(2);
 
     std::cout << "=== SHAPE TESTS ===\n";
     std::cout << "Circle area: " << circle.area() << ", perimeter: " << circle.perimeter() << "\n";
@@ -48,13 +48,13 @@ int main() {
 
     std::cout << "=== LINEAR EQUATION TESTS ===\n";
 
-    auto x1 = LinearEquation::solve_1v(2, 4);
+    auto x1 = imeth::solve_1v(2, 4);
     if (x1)
         std::cout << "Equation 1 Variable: x = " << *x1 << "\n";
     else
         std::cout << "Equation 1 Variable: No solution\n";
 
-    auto xy = LinearEquation::solve_2v(2, 3, 8, 4, -2, 0);
+    auto xy = imeth::solve_2v(2, 3, 8, 4, -2, 0);
     if (xy)
         std::cout << "Equation 2 Variables: x = " << xy->first << ", y = " << xy->second << "\n";
     else
