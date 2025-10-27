@@ -1,4 +1,4 @@
-name: CMake on multiple platforms
+name: CMake Multi-Platform Build
 
 on:
   push:
@@ -7,60 +7,59 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
+  build-linux:
+    name: Build (Linux)
+    runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        compiler: [gcc, clang]
         build_type: [Release]
-        compiler: [gcc, clang, msvc]
-        include:
-          - os: ubuntu-latest
-            compiler: gcc
-            c_compiler: gcc
-            cpp_compiler: g++
-          - os: ubuntu-latest
-            compiler: clang
-            c_compiler: clang
-            cpp_compiler: clang++
-          - os: windows-latest
-            compiler: msvc
-        exclude:
-          - os: windows-latest
-            compiler: gcc
-          - os: windows-latest
-            compiler: clang
-
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up CMake build dir
-        id: strings
-        shell: bash
-        run: echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
-
-      - name: Configure CMake (Linux)
-        if: runner.os != 'Windows'
+      - name: Set up compilers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ clang
+      - name: Configure
         run: >
-          cmake -B ${{ steps.strings.outputs.build-output-dir }}
-          -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
-          -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+          cmake -B build
+          -DCMAKE_CXX_COMPILER=${{ matrix.compiler == 'gcc' && 'g++' || 'clang++' }}
+          -DCMAKE_C_COMPILER=${{ matrix.compiler == 'gcc' && 'gcc' || 'clang' }}
           -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-          -S ${{ github.workspace }}
+          -S .
+      - name: Build
+        run: cmake --build build --config ${{ matrix.build_type }}
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
 
-      - name: Configure CMake (Windows)
-        if: runner.os == 'Windows'
+  build-macos:
+    name: Build (macOS)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
         run: >
-          cmake -B ${{ steps.strings.outputs.build-output-dir }}
+          cmake -B build
+          -DCMAKE_BUILD_TYPE=Release
+          -S .
+      - name: Build
+        run: cmake --build build --config Release
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  build-windows:
+    name: Build (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: >
+          cmake -B build
           -G "Visual Studio 17 2022"
           -A x64
-          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-          -S ${{ github.workspace }}
-
+          -DCMAKE_BUILD_TYPE=Release
+          -S .
       - name: Build
-        run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
-
+        run: cmake --build build --config Release
       - name: Test
-        working-directory: ${{ steps.strings.outputs.build-output-dir }}
-        run: ctest --build-config ${{ matrix.build_type }}
+        run: ctest --test-dir build --build-config Release --output-on-failure
