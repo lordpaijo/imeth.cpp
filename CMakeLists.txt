@@ -7,12 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # ======================
 # Main library
 # ======================
-add_library(imeth STATIC
-    src/algebra.cpp
-    src/matrix.cpp
-    src/shape_2d.cpp
-    src/shape_3d.cpp
+file(GLOB_RECURSE IMETH_SOURCES
+    CONFIGURE_DEPENDS
+    "src/*.cpp"
 )
+add_library(imeth STATIC ${IMETH_SOURCES})
 
 # Proper include handling (for both build & install)
 target_include_directories(imeth
