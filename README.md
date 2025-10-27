@@ -23,14 +23,14 @@ $ sudo make install
 
 ## Usage
 ### API
-Currently there has been only shorthand amount of APIs available. Likely it's due to the author being a lazy freak, who's high on meth.
+Currently divided into two fractions, `shape` and `linear`, there has been only shorthand amount of APIs available. Likely it's due to the author being a lazy freak, who's high on meth. Though it's expected that overtime, more APIs will be added to the library.
 ```cpp
 #include <imeth/shape/2D.hpp>
 #include <imeth/shape/3D.hpp>
 #include <imeth/linear/algebra.hpp>
+#include <imeth/linear/matrix.hpp>
 ```
 Imeth itself is just a big chunk of library with tons of modularity. Which you will likely never see it included just by its name (even in the future), since it doesn't have any implementation either. It's just a blob of bunch of headers that you can include in your project.
-Unless someone wants to change this by however they want, it's likely that this will stay forever.
 ### Example
 Here's a simple example of the APIs usage:
 ```cpp
@@ -59,6 +59,16 @@ int main() {
         std::cout << "Equation 2 Variables: x = " << xy->first << ", y = " << xy->second << "\n";
     else
         std::cout << "Equation 2 Variables: No solution\n";
+
+    imeth::Matrix A{{2, 1}, {5, 7}};
+    imeth::Vector b{11, 13};
+
+    auto x = imeth::Solver::gaussian_elimination(A, b);
+
+    std::cout << "Solution: ";
+    for (size_t i = 0; i < x.size(); ++i)
+        std::cout << x[i] << " ";
+    std::cout << "\n";
 }
 ```
 The author doesn't believe that this is a good example of how to use the library. But the author is not God The Almighty so he just doesn't care about whatever his AI wrote for him.
