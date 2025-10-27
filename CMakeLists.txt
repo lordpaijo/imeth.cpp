@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Main library target
 add_library(imeth STATIC
-    src/linear.cpp
+    src/algebra.cpp
     src/shape_2d.cpp
     src/shape_3d.cpp
 )
