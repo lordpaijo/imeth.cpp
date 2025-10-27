@@ -1,6 +1,6 @@
 #include "../include/imeth/linear/linear.hpp"
 
-namespace LinearEquation {
+namespace imeth {
 
 std::optional<double> solve_1v(double a, double b) {
   if (a == 0.0) return std::nullopt;

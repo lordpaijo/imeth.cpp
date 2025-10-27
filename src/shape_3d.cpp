@@ -1,7 +1,7 @@
 #include "../include/imeth/shape/3D.hpp"
 #include <cmath>
 
-namespace shape_3d {
+namespace imeth {
 
 Sphere::Sphere(double radius) : radius_(radius) {}
 

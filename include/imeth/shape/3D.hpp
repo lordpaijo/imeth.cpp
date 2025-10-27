@@ -1,6 +1,6 @@
 #pragma once
 
-namespace shape_3d {
+namespace imeth {
 
 class Shape3D {
 public:
