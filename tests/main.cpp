@@ -1,7 +1,7 @@
 #include <iostream>
 #include <imeth/shape/2D.hpp>
 #include <imeth/shape/3D.hpp>
-#include <imeth/linear/linear.hpp>
+#include <imeth/linear/algebra.hpp>
 
 int main() {
     imeth::Circle circle(5);

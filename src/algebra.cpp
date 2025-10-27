@@ -1,4 +1,4 @@
-#include "../include/imeth/linear/linear.hpp"
+#include "../include/imeth/linear/algebra.hpp"
 
 namespace imeth {
 
