@@ -2,6 +2,7 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
+#include <numbers>
 
 namespace imeth {
 
@@ -270,7 +271,7 @@ double Arithmetic::triangleArea(double base, double height) {
 }
 
 double Arithmetic::circleArea(double radius) {
-    return M_PI * radius * radius;
+    return std::numbers::pi * radius * radius;
 }
 
 // Perimeter Calculations
@@ -283,7 +284,7 @@ double Arithmetic::trianglePerimeter(double side1, double side2, double side3) {
 }
 
 double Arithmetic::circleCircumference(double radius) {
-    return 2 * M_PI * radius;
+    return 2 * std::numbers::pi * radius;
 }
 
 } // namespace imeth
