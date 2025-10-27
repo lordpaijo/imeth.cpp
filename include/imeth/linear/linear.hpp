@@ -2,7 +2,7 @@
 #include <optional>
 #include <utility>
 
-namespace LinearEquation {
+namespace imeth {
 
 std::optional<double> solve_1v(double a, double b);
 

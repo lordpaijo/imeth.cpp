@@ -1,6 +1,6 @@
 #pragma once
 
-namespace shape_2d {
+namespace imeth {
 class Shape2D {
 public:
     Shape2D() = default;

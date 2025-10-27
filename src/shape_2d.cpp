@@ -1,7 +1,7 @@
 #include "../include/imeth/shape/2D.hpp"
 #include <cmath>
 
-namespace shape_2d {
+namespace imeth {
 double Circle::area() const {
     return M_PI * radius_ * radius_;
 }
