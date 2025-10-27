@@ -2,6 +2,7 @@
 #include <imeth/shape/2D.hpp>
 #include <imeth/shape/3D.hpp>
 #include <imeth/linear/algebra.hpp>
+#include <imeth/linear/matrix.hpp>
 
 int main() {
     imeth::Circle circle(5);
@@ -28,6 +29,16 @@ int main() {
         std::cout << "Equation 2 Variables: x = " << xy->first << ", y = " << xy->second << "\n";
     else
         std::cout << "Equation 2 Variables: No solution\n";
+
+    imeth::Matrix A{{2, 1}, {5, 7}};
+    imeth::Vector b{11, 13};
+
+    auto x = imeth::Solver::gaussian_elimination(A, b);
+
+    std::cout << "Solution: ";
+    for (size_t i = 0; i < x.size(); ++i)
+        std::cout << x[i] << " ";
+    std::cout << "\n";
 }
 
 // thank you gpt lmao

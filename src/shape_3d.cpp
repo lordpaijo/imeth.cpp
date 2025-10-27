@@ -57,4 +57,4 @@ double Torus::volume() const {
     return 2 * M_PI * M_PI * major_radius_ * minor_radius_ * minor_radius_;
 }
 
-} // namespace shape_3d
+} // namespace imeth

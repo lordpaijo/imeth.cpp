@@ -58,4 +58,4 @@ double Octagon::area() const {
 double Octagon::perimeter() const {
     return 8 * side_;
 }
-} // namespace shape_2d
+} // namespace imeth
