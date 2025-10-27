@@ -1,13 +1,14 @@
 #include "../include/imeth/shape/2D.hpp"
 #include <cmath>
+#include <numbers>
 
 namespace imeth {
 double Circle::area() const {
-    return M_PI * radius_ * radius_;
+    return std::numbers::pi * radius_ * radius_;
 }
 
 double Circle::perimeter() const {
-    return 2 * M_PI * radius_;
+    return 2 * std::numbers::pi * radius_;
 }
 
 double Rectangle::area() const {
