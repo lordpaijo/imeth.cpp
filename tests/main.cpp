@@ -1,6 +1,6 @@
 #include <iostream>
-#include <imeth/shape/2D.hpp>
-#include <imeth/shape/3D.hpp>
+#include <imeth/geometry/2D.hpp>
+#include <imeth/geometry/3D.hpp>
 #include <imeth/linear/algebra.hpp>
 #include <imeth/linear/matrix.hpp>
 #include <imeth/operation/arithmetic.hpp>

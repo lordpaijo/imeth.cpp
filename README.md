@@ -134,11 +134,6 @@ int main() {
 }
 ```
 
-**Compile:**
-```sh
-g++ -std=c++20 calculator.cpp -I/usr/local/include -L/usr/local/lib -limeth -o calculator
-```
-
 ### Linear Equation Solver (1 Variable)
 
 Here's a simple example to solve equations of the form: `ax + b = 0` using `<imeth/linear/algebra.hpp>`:
@@ -160,11 +155,6 @@ int main() {
 
     return 0;
 }
-```
-
-**Compile:**
-```sh
-g++ -std=c++20 solver.cpp -I/usr/local/include -L/usr/local/lib -limeth -o solver
 ```
 
 ### Linear Equation Solver (2 Variables)
@@ -200,18 +190,13 @@ int main() {
 }
 ```
 
-**Compile:**
-```sh
-g++ -std=c++20 system_solver.cpp -I/usr/local/include -L/usr/local/lib -limeth -o system_solver
-```
-
 ### Shape Calculations
 
 Calculate properties of geometric shapes:
 
 ```cpp
-#include <imeth/shape/2D.hpp>
-#include <imeth/shape/3D.hpp>
+#include <imeth/geometry/2D.hpp>
+#include <imeth/geometry/3D.hpp>
 #include <iostream>
 
 int main() {
@@ -229,20 +214,27 @@ int main() {
 }
 ```
 
-**Compile:**
-```sh
-g++ -std=c++20 shapes.cpp -I/usr/local/include -L/usr/local/lib -limeth -o shapes
-```
-
 ## API Reference
 
-Imeth is a modular library divided into namespaces:
+Imeth is a modular library divided into namespaces and classes, which I prefer to call categories. Each *category* provides a set of functionalities related to a specific area of mathematics. Here's a simple table of the categories available in Imeth:
 
+| Category | Description |
+| --- | --- |
+| `<imeth/linear>` | Linear equations and operations |
+| `<imeth/operation>` | Bunch of general mathematical operations |
+| `<imeth/geometry>` | Geometric shape calculations |
+| `<imeth/base>` | Base conversions and operations |
+
+Categories are there to represent `headers` fitting their functionalities. Each category is responsible for every `header` placed within its namespace. I'd like to call these `headers` as *chapters* since a category can consist of multiple chapters. You can see the usage of Imeth, its categories, and its chapters from the given examples [above](https://github.com/lordpaijo/imeth.cpp/blob/main/README.md#quick-start).
+
+A clearer sight might look like this:
 ```cpp
-#include <imeth/linear/*.hpp>      // Linear algebra operations
-#include <imeth/operation/*.hpp>   // Arithmetic and mathematical operations
-#include <imeth/shape/*.hpp>       // Geometric shape calculations
-#include <imeth/base/*.hpp>        // Base conversion operations
+#include <imeth/linear/algebra.hpp>             // Calling imeth's chapter algebra from the category linear
+#include <imeth/linear/matrix.hpp>              // Calling imeth's chapter matrix from the category linear
+#include <imeth/operation/arithmetic.hpp>       // Calling imeth's chapter arithmetic from the category operation
+#include <imeth/geometry/2D.hpp>                   // Calling imeth's chapter 2D from the category geometry
+#include <imeth/geometry/3D.hpp>                   // Calling imeth's chapter 3D from the category geometry
+#include <imeth/base/base.hpp>                  // Calling imeth's chapter base from the category base
 ```
 
 The library is designed for maximum modularity – include only what you need.
@@ -256,7 +248,7 @@ Contributions are welcome! If you're also high on math (or just want to help), f
 - Suggest new features
 - Improve documentation
 
-The project is open to all mathematically-inclined minds.
+The project is open to all mathematically inclined minds.
 
 ## License
 
