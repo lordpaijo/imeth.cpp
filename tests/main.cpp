@@ -66,11 +66,6 @@ int main() {
     std::cout << "Is 20 even? " << (imeth::Arithmetic::isEven(20) ? "Yes" : "No") << "\n";
     std::cout << "GCD of 48 and 18 = " << imeth::Arithmetic::greatestCommonDivisor(48, 18) << "\n\n";
 
-    // Geometry (you can compare with your shape classes!)
-    std::cout << "Distance from (0,0) to (3,4) = " << imeth::Arithmetic::distance2D(0, 0, 3, 4) << "\n";
-    std::cout << "Circle area with radius 5 = " << imeth::Arithmetic::circleArea(5) << "\n";
-    std::cout << "Rectangle 4x6 area = " << imeth::Arithmetic::rectangleArea(4, 6) << "\n\n";
-
     // Temperature
     std::cout << "25°C in Fahrenheit = " << imeth::Arithmetic::celsiusToFahrenheit(25) << "°F\n";
 }

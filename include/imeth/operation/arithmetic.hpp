@@ -66,15 +66,5 @@ public:
 
     // Simple Interest
     static double simpleInterest(double principal, double rate, double time);
-
-    // Area Calculations
-    static double rectangleArea(double length, double width);
-    static double triangleArea(double base, double height);
-    static double circleArea(double radius);
-
-    // Perimeter Calculations
-    static double rectanglePerimeter(double length, double width);
-    static double trianglePerimeter(double side1, double side2, double side3);
-    static double circleCircumference(double radius);
 };
 } // namespace imeth

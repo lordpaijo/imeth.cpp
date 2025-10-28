@@ -2,7 +2,6 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-#include <numbers>
 
 namespace imeth {
 
@@ -260,31 +259,4 @@ double Arithmetic::fahrenheitToCelsius(double fahrenheit) {
 double Arithmetic::simpleInterest(double principal, double rate, double time) {
     return principal * (rate / 100.0) * time;
 }
-
-// Area Calculations
-double Arithmetic::rectangleArea(double length, double width) {
-    return length * width;
-}
-
-double Arithmetic::triangleArea(double base, double height) {
-    return 0.5 * base * height;
-}
-
-double Arithmetic::circleArea(double radius) {
-    return std::numbers::pi * radius * radius;
-}
-
-// Perimeter Calculations
-double Arithmetic::rectanglePerimeter(double length, double width) {
-    return 2 * (length + width);
-}
-
-double Arithmetic::trianglePerimeter(double side1, double side2, double side3) {
-    return side1 + side2 + side3;
-}
-
-double Arithmetic::circleCircumference(double radius) {
-    return 2 * std::numbers::pi * radius;
-}
-
 } // namespace imeth
