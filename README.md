@@ -216,7 +216,7 @@ int main() {
 
 ## API Reference
 
-Imeth is a modular library divided into namespaces and classes that I prefer calling them as *categories*. Each *category* provides a set of functionalities related to a specific area of mathematics. Here's a simple table of the categories available in Imeth:
+Imeth is a modular library divided into namespaces and classes, which I prefer to call categories. Each *category* provides a set of functionalities related to a specific area of mathematics. Here's a simple table of the categories available in Imeth:
 
 | Category | Description |
 | --- | --- |
@@ -225,7 +225,7 @@ Imeth is a modular library divided into namespaces and classes that I prefer cal
 | `<imeth/shape>` | Geometric shape calculations |
 | `<imeth/base>` | Base conversions and operations |
 
-Categories are there to represent `headers` fitting their functionalities. Each category is responsible for every `headers` placed within its namespace. I'd like to call these `headers` as *chapters* since a category can consist of multiple chapters. You can see the usage of Imeth, its categories, and its chapters from the given examples [above](<README#Quick Start>).
+Categories are there to represent `headers` fitting their functionalities. Each category is responsible for every `header` placed within its namespace. I'd like to call these `headers` as *chapters* since a category can consist of multiple chapters. You can see the usage of Imeth, its categories, and its chapters from the given examples [above](https://github.com/lordpaijo/imeth.cpp/blob/main/README.md#quick-start).
 
 A clearer sight might look like this:
 ```cpp
@@ -248,7 +248,7 @@ Contributions are welcome! If you're also high on math (or just want to help), f
 - Suggest new features
 - Improve documentation
 
-The project is open to all mathematically-inclined minds.
+The project is open to all mathematically inclined minds.
 
 ## License
 
