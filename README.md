@@ -10,7 +10,7 @@ A lightweight C++ math library for exploring computational mathematics while tes
 - **Linear Algebra**: Equation solving, matrix operations, and more
 - **Shape Calculations**: 2D and 3D geometric operations
 - **Base Conversions and Operations**: Convert and operate on numbers between different bases
-- **Header-Only Design**: Maximum modularity, minimal overhead
+- **Modular Design**: Clean, organized API with namespace separation
 - **Simple API**: Clean interfaces for complex math
 
 ## Installation
@@ -22,7 +22,8 @@ git clone https://github.com/lordpaijo/imeth.cpp.git imeth
 cd imeth
 ```
 
-### Build with CMake
+### Build and Install with CMake
+
 #### Linux/MacOS
 ```sh
 mkdir build && cd build
@@ -31,16 +32,21 @@ make -j
 sudo make install
 ```
 
+This will install:
+- Library: `/usr/local/lib/libimeth.a`
+- Headers: `/usr/local/include/imeth/`
+- CMake config: `/usr/local/lib/cmake/imeth/`
+
 #### Windows
 Using Visual Studio:
 ```sh
 mkdir build
 cd build
-cmake .. -G "Visual Studio 20 2022"
+cmake .. -G "Visual Studio 17 2022"
 cmake --build . --config Release
 cmake --install . --config Release
 ```
-Or using mingw:
+Or using MinGW:
 ```sh
 mkdir build
 cd build
@@ -49,16 +55,43 @@ mingw32-make -j
 mingw32-make install
 ```
 
-### Manual Installation (Header-Only)
-Since imeth is header-only, you can also manually copy the `include/imeth` directory to your project's include path:
-```sh
-cp -r include/imeth /path/to/your/project/include
+## Usage
+
+### Using with CMake (Recommended)
+
+In your project's `CMakeLists.txt`:
+
+```cmake
+cmake_minimum_required(VERSION 3.15)
+project(MyProject CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+
+# Find the installed imeth library
+find_package(imeth REQUIRED)
+
+add_executable(my_app main.cpp)
+
+# Link against imeth
+target_link_libraries(my_app PRIVATE imeth::imeth)
 ```
-Then include the library path in your compiler flags:
+
+Then build:
 ```sh
-g++ -I/path/to/your/project/include your_code.cpp -o your_program
-# or with clang++
-clang++ -I/path/to/your/project/include your_code.cpp -o your_program
+cmake -B build
+cmake --build build
+```
+
+### Using with Compiler Directly
+
+After installation, compile your code with:
+
+```sh
+# Using g++
+g++ -std=c++20 your_code.cpp -I/usr/local/include -L/usr/local/lib -limeth -o your_program
+
+# Using clang++
+clang++ -std=c++20 your_code.cpp -I/usr/local/include -L/usr/local/lib -limeth -o your_program
 ```
 
 ## Quick Start
@@ -101,6 +134,11 @@ int main() {
 }
 ```
 
+**Compile:**
+```sh
+g++ -std=c++20 calculator.cpp -I/usr/local/include -L/usr/local/lib -limeth -o calculator
+```
+
 ### Linear Equation Solver (1 Variable)
 
 Here's a simple example to solve equations of the form: `ax + b = 0` using `<imeth/linear/algebra.hpp>`:
@@ -112,7 +150,7 @@ Here's a simple example to solve equations of the form: `ax + b = 0` using `<ime
 int main() {
     // Solve: 2x + 4 = 0
     // Solution: x = -2
-    auto solution = imeth::solve_1v(2, 4);
+    auto solution = imeth::LinearAlgebra::solve_1v(2, 4);
 
     if (solution) {
         std::cout << "Solution: x = " << *solution << "\n";
@@ -122,6 +160,11 @@ int main() {
 
     return 0;
 }
+```
+
+**Compile:**
+```sh
+g++ -std=c++20 solver.cpp -I/usr/local/include -L/usr/local/lib -limeth -o solver
 ```
 
 ### Linear Equation Solver (2 Variables)
@@ -143,8 +186,8 @@ int main() {
     //   4x - 2y = 0
     // Solution: x = 1, y = 2
 
-    auto solution = imeth::solve_2v(2, 3, 8,    // First equation coefficients
-                                     4, -2, 0);  // Second equation coefficients
+    auto solution = imeth::LinearAlgebra::solve_2v(2, 3, 8,    // First equation coefficients
+                                                    4, -2, 0);  // Second equation coefficients
 
     if (solution) {
         std::cout << "Solution: x = " << solution->first
@@ -157,15 +200,49 @@ int main() {
 }
 ```
 
-## API Reference
+**Compile:**
+```sh
+g++ -std=c++20 system_solver.cpp -I/usr/local/include -L/usr/local/lib -limeth -o system_solver
+```
 
-Imeth is a modular, header-only library divided into namespaces:
+### Shape Calculations
+
+Calculate properties of geometric shapes:
 
 ```cpp
-#include <imeth/linear/*.hpp>
-#include <imeth/operation/*.hpp>
-#include <imeth/shape/*.hpp>
-#include <imeth/base/*.hpp>
+#include <imeth/shape/2D.hpp>
+#include <imeth/shape/3D.hpp>
+#include <iostream>
+
+int main() {
+    // 2D shapes
+    imeth::Circle circle(5.0);
+    std::cout << "Circle area: " << circle.area() << "\n";
+    std::cout << "Circle perimeter: " << circle.perimeter() << "\n";
+
+    // 3D shapes
+    imeth::Sphere sphere(5.0);
+    std::cout << "Sphere surface area: " << sphere.area() << "\n";
+    std::cout << "Sphere volume: " << sphere.volume() << "\n";
+
+    return 0;
+}
+```
+
+**Compile:**
+```sh
+g++ -std=c++20 shapes.cpp -I/usr/local/include -L/usr/local/lib -limeth -o shapes
+```
+
+## API Reference
+
+Imeth is a modular library divided into namespaces:
+
+```cpp
+#include <imeth/linear/*.hpp>      // Linear algebra operations
+#include <imeth/operation/*.hpp>   // Arithmetic and mathematical operations
+#include <imeth/shape/*.hpp>       // Geometric shape calculations
+#include <imeth/base/*.hpp>        // Base conversion operations
 ```
 
 The library is designed for maximum modularity – include only what you need.
