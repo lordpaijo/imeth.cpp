@@ -232,8 +232,8 @@ A clearer sight might look like this:
 #include <imeth/linear/algebra.hpp>             // Calling imeth's chapter algebra from the category linear
 #include <imeth/linear/matrix.hpp>              // Calling imeth's chapter matrix from the category linear
 #include <imeth/operation/arithmetic.hpp>       // Calling imeth's chapter arithmetic from the category operation
-#include <imeth/geometry/2D.hpp>                   // Calling imeth's chapter 2D from the category geometry
-#include <imeth/geometry/3D.hpp>                   // Calling imeth's chapter 3D from the category geometry
+#include <imeth/geometry/2D.hpp>                // Calling imeth's chapter 2D from the category geometry
+#include <imeth/geometry/3D.hpp>                // Calling imeth's chapter 3D from the category geometry
 #include <imeth/base/base.hpp>                  // Calling imeth's chapter base from the category base
 ```
 
