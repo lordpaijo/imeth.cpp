@@ -1,4 +1,4 @@
-#include "../include/imeth/shape/2D.hpp"
+#include "../include/imeth/geometry/2D.hpp"
 #include <cmath>
 #include <numbers>
 
