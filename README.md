@@ -195,8 +195,8 @@ int main() {
 Calculate properties of geometric shapes:
 
 ```cpp
-#include <imeth/shape/2D.hpp>
-#include <imeth/shape/3D.hpp>
+#include <imeth/geometry/2D.hpp>
+#include <imeth/geometry/3D.hpp>
 #include <iostream>
 
 int main() {
@@ -222,7 +222,7 @@ Imeth is a modular library divided into namespaces and classes, which I prefer t
 | --- | --- |
 | `<imeth/linear>` | Linear equations and operations |
 | `<imeth/operation>` | Bunch of general mathematical operations |
-| `<imeth/shape>` | Geometric shape calculations |
+| `<imeth/geometry>` | Geometric shape calculations |
 | `<imeth/base>` | Base conversions and operations |
 
 Categories are there to represent `headers` fitting their functionalities. Each category is responsible for every `header` placed within its namespace. I'd like to call these `headers` as *chapters* since a category can consist of multiple chapters. You can see the usage of Imeth, its categories, and its chapters from the given examples [above](https://github.com/lordpaijo/imeth.cpp/blob/main/README.md#quick-start).
@@ -232,8 +232,8 @@ A clearer sight might look like this:
 #include <imeth/linear/algebra.hpp>             // Calling imeth's chapter algebra from the category linear
 #include <imeth/linear/matrix.hpp>              // Calling imeth's chapter matrix from the category linear
 #include <imeth/operation/arithmetic.hpp>       // Calling imeth's chapter arithmetic from the category operation
-#include <imeth/shape/2D.hpp>                   // Calling imeth's chapter 2D from the category shape
-#include <imeth/shape/3D.hpp>                   // Calling imeth's chapter 3D from the category shape
+#include <imeth/geometry/2D.hpp>                   // Calling imeth's chapter 2D from the category geometry
+#include <imeth/geometry/3D.hpp>                   // Calling imeth's chapter 3D from the category geometry
 #include <imeth/base/base.hpp>                  // Calling imeth's chapter base from the category base
 ```
 
