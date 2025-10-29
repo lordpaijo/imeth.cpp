@@ -68,6 +68,13 @@ int main() {
 
     // Temperature
     std::cout << "25°C in Fahrenheit = " << imeth::Arithmetic::celsiusToFahrenheit(25) << "°F\n";
+
+    // Quadratic equation
+    auto result = imeth::QuadraticEquation::solve(1, -5, 6); // x² - 5x + 6 = 0
+    if (std::holds_alternative<std::pair<double, double>>(result)) {
+      auto [x1, x2] = std::get<std::pair<double, double>>(result);
+      std::cout << "x1 = " << x1 << ", x2 = " << x2 << "\n";
+    }
 }
 
 // thank you gpt lmao
