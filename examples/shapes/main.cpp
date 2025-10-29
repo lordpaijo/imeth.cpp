@@ -1,5 +1,5 @@
-#include <imeth/shape/2D.hpp>
-#include <imeth/shape/3D.hpp>
+#include <imeth/geometry/2D.hpp>
+#include <imeth/geometry/3D.hpp>
 #include <iostream>
 
 int main() {
