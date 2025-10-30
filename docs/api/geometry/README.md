@@ -2,7 +2,7 @@
 
 The `geometry` category contains geometric shape calculations for 2D and 3D shapes.
 
-```cpp
+```c++
 #include <imeth/geometry/...>
 ```
 
@@ -12,6 +12,6 @@ The `geometry` category contains geometric shape calculations for 2D and 3D shap
 
 ## Usage
 
-```cpp
+```c++
 #include <imeth/geometry/...>
 ```

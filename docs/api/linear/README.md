@@ -9,7 +9,7 @@ The `linear` category contains linear algebra operations including equation solv
 
 ## Usage
 
-```cpp
+```c++
 #include <imeth/linear/algebra.hpp>
 #include <imeth/linear/matrix.hpp>
 ```

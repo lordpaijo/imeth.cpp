@@ -2,7 +2,7 @@
 
 The arithmetic chapter is the first chapter from the `operation` category. It provides a comprehensive collection of arithmetic operations and mathematical utilities, ranging from basic operations to statistical functions, number theory, and practical calculations.
 
-```cpp
+```c++
 #include <imeth/operation/arithmetic.hpp>
 ```
 
@@ -73,7 +73,7 @@ The arithmetic chapter is the first chapter from the `operation` category. It pr
 
 ## Example Usage
 
-```cpp
+```c++
 #include <imeth/operation/arithmetic.hpp>
 #include <iostream>
 
@@ -111,7 +111,7 @@ int main() {
 
 ## More Examples
 
-```cpp
+```c++
 // Statistical calculations
 std::vector<double> grades = {85.5, 92.0, 78.5, 95.0, 88.0};
 double avg = imeth::Arithmetic::average(grades);      // 87.8

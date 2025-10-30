@@ -9,7 +9,7 @@ The `operation` category contains general mathematical operations including arit
 
 ## Usage
 
-```cpp
+```c++
 #include <imeth/operation/arithmetic.hpp>
 #include <imeth/operation/logarithm.hpp>
 ```

@@ -2,7 +2,7 @@
 
 The `base` category contains base conversions and operations for working with different number bases.
 
-```cpp
+```c++
 #include <imeth/base/...>
 ```
 
@@ -12,6 +12,6 @@ The `base` category contains base conversions and operations for working with di
 
 ## Usage
 
-```cpp
+```c++
 #include <imeth/base/...>
 ```

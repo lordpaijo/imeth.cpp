@@ -3,7 +3,7 @@
 I genuinely don't know what matrix or vector is (besides them being a dynamic alternative for arrays in C++). I mean, what do you expect from a 9th grader?
 But, here the chapter `matrix.hpp`, exists...
 
-```cpp
+```c++
 #include <imeth/linear/matrix.hpp>
 ```
 
@@ -48,7 +48,7 @@ A 2D array of numbers that supports mathematical operations like addition, multi
 
 ### Example Usage
 
-```cpp
+```c++
 #include <imeth/linear/matrix.hpp>
 #include <iostream>
 
@@ -84,7 +84,7 @@ int main() {
 
 ### More Examples
 
-```cpp
+```c++
 // Matrix addition
 imeth::Matrix A = {{1, 2}, {3, 4}};
 imeth::Matrix B = {{5, 6}, {7, 8}};
@@ -121,7 +121,7 @@ A 1D array of numbers (essentially a column vector in mathematical terms).
 
 ### Example Usage
 
-```cpp
+```c++
 #include <imeth/linear/matrix.hpp>
 #include <iostream>
 
@@ -162,7 +162,7 @@ Provides numerical methods for solving systems of linear equations Ax = b, where
 
 ### Example Usage
 
-```cpp
+```c++
 #include <imeth/linear/matrix.hpp>
 #include <iostream>
 
@@ -196,7 +196,7 @@ int main() {
 
 ### More Examples
 
-```cpp
+```c++
 // Solve a 3×3 system:
 // x + 2y + z = 6
 // 2x + y + z = 6

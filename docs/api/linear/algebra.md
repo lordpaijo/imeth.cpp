@@ -2,7 +2,7 @@
 
 Ah, yes, algebra, my favorite subject. This chapter exists in the `linear` category and provides tools for solving linear equations, systems of linear equations, and quadratic equations.
 
-```cpp
+```c++
 #include <imeth/linear/algebra.hpp>
 ```
 
@@ -35,7 +35,7 @@ Provides methods for solving linear equations in one or two variables.
 
 ### Example Usage
 
-```cpp
+```c++
 #include <imeth/linear/algebra.hpp>
 #include <iostream>
 
@@ -68,7 +68,7 @@ Solves quadratic equations of the form ax² + bx + c = 0 using the quadratic for
 ### Features
 
 #### Solution Type
-```cpp
+```c++
 using Solution = std::variant<std::monostate, double, std::pair<double, double>>;
 ```
 
@@ -85,7 +85,7 @@ The `Solution` type can represent three possible outcomes:
 
 ### Example Usage
 
-```cpp
+```c++
 #include <imeth/linear/algebra.hpp>
 #include <iostream>
 #include <variant>
@@ -114,7 +114,7 @@ int main() {
 
 ### More Examples
 
-```cpp
+```c++
 // Repeated root (discriminant = 0)
 // Solve: x² - 4x + 4 = 0  →  (x - 2)² = 0
 auto repeated = imeth::QuadraticEquation::solve(1, -4, 4);

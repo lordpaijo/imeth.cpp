@@ -2,7 +2,7 @@
 
 Logarithm is the second chapter that can be found from the `operation` category. It provides methods and functions to operate logarithmic operations, including common logarithms, natural logarithms, exponential equation solving, and base conversions.
 
-```cpp
+```c++
 #include <imeth/operation/logarithm.hpp>
 ```
 
@@ -31,7 +31,7 @@ All methods return `std::optional<double>`:
 
 ## Example Usage
 
-```cpp
+```c++
 #include <imeth/operation/logarithm.hpp>
 #include <iostream>
 
@@ -66,7 +66,7 @@ int main() {
 
 ## More Examples
 
-```cpp
+```c++
 // Solving exponential equations
 // Solve: 2^x = 32
 auto x = imeth::Logarithm::solve_exponential(2, 32);
