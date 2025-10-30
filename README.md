@@ -1,4 +1,4 @@
-# IMETH
+# imeth
 
 **I + METH** – Because I'm high on math equations like a guy high on meth.
 
@@ -177,7 +177,7 @@ int main() {
     // Solution: x = 1, y = 2
 
     auto solution = imeth::LinearAlgebra::solve_2v(2, 3, 8,    // First equation coefficients
-                                                    4, -2, 0);  // Second equation coefficients
+                                                   4, -2, 0);  // Second equation coefficients
 
     if (solution) {
         std::cout << "Solution: x = " << solution->first
@@ -216,7 +216,7 @@ int main() {
 
 ## API Reference
 
-Imeth is a modular library divided into namespaces and classes, which I prefer to call categories. Each *category* provides a set of functionalities related to a specific area of mathematics. Here's a simple table of the categories available in Imeth:
+Imeth is a modular library divided into namespaces and classes, which I prefer to call _categories_. Each *category* provides a set of functionalities related to a specific area of mathematics. Here's a simple table of the categories available in Imeth:
 
 | Category | Description |
 | --- | --- |
