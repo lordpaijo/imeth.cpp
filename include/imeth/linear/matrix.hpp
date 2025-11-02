@@ -14,7 +14,7 @@ public:
     size_t rows() const;
     size_t cols() const;
 
-    static Matrix identity(size_t n);
+    Matrix identity(size_t n);
 
     Matrix transpose() const;
     Matrix operator*(const Matrix& rhs) const;
@@ -39,11 +39,10 @@ private:
     std::vector<double> m_data;
 };
 
-class Solver {
-public:
-    static Vector gaussian_elimination(const Matrix& A, const Vector& b);
-    static Vector gauss_jordan(const Matrix& A, const Vector& b);
-    static Vector lu_decomposition(const Matrix& A, const Vector& b);
-};
+namespace Solver {
+    Vector gaussian_elimination(const Matrix& A, const Vector& b);
+    Vector gauss_jordan(const Matrix& A, const Vector& b);
+    Vector lu_decomposition(const Matrix& A, const Vector& b);
+};  // namespace solver
 
 } // namespace imeth
