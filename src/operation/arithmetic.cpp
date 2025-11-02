@@ -1,5 +1,4 @@
 #include "../include/imeth/operation/arithmetic.hpp"
-#include <cmath>
 #include <algorithm>
 #include <stdexcept>
 
@@ -66,6 +65,10 @@ double Arithmetic::absolute(double n) {
     return n < 0 ? -n : n;
 }
 
+int Arithmetic::absolute(int n) {
+    return n < 0 ? -n : n;
+}
+
 int Arithmetic::sign(double n) {
     if (n > 0) return 1;
     if (n < 0) return -1;
@@ -121,7 +124,7 @@ double Arithmetic::average(const std::vector<double>& numbers) {
 
 double Arithmetic::sum(const std::vector<double>& numbers) {
     double total = 0;
-    for (double n : numbers) {
+    for (const double n : numbers) {
         total += n;
     }
     return total;
@@ -131,14 +134,14 @@ double Arithmetic::minimum(const std::vector<double>& numbers) {
     if (numbers.empty()) {
         throw std::invalid_argument("Cannot find minimum of empty list");
     }
-    return *std::min_element(numbers.begin(), numbers.end());
+    return *std::ranges::min_element(numbers);
 }
 
 double Arithmetic::maximum(const std::vector<double>& numbers) {
     if (numbers.empty()) {
         throw std::invalid_argument("Cannot find maximum of empty list");
     }
-    return *std::max_element(numbers.begin(), numbers.end());
+    return *std::ranges::max_element(numbers);
 }
 
 double Arithmetic::range(const std::vector<double>& numbers) {
@@ -163,7 +166,7 @@ double Arithmetic::median(std::vector<double> numbers) {
 }
 
 // Fractions
-double Arithmetic::addFractions(double num1, double den1, double num2, double den2) {
+double Arithmetic::addFractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero");
     }
@@ -174,7 +177,7 @@ double Arithmetic::addFractions(double num1, double den1, double num2, double de
     return (newNum1 + newNum2) / commonDen;
 }
 
-double Arithmetic::subtractFractions(double num1, double den1, double num2, double den2) {
+double Arithmetic::subtractFractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero");
     }
@@ -184,37 +187,49 @@ double Arithmetic::subtractFractions(double num1, double den1, double num2, doub
     return (newNum1 - newNum2) / commonDen;
 }
 
-double Arithmetic::multiplyFractions(double num1, double den1, double num2, double den2) {
+double Arithmetic::multiplyFractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero");
     }
     return (num1 * num2) / (den1 * den2);
 }
 
-double Arithmetic::divideFractions(double num1, double den1, double num2, double den2) {
+double Arithmetic::divideFractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0 || num2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero and cannot divide by zero");
     }
-    // Flip second fraction and multiply
     return (num1 * den2) / (den1 * num2);
 }
 
 // Rounding
 double Arithmetic::roundToNearest(double n) {
-    return std::round(n);
+    if (n >= 0) {
+        return static_cast<double>(static_cast<long long>(n + 0.5));
+    } else {
+        return static_cast<double>(static_cast<long long>(n - 0.5));
+    }
+    // this can give incorrect results... Do I have to wrap lround() from cmath here?????
 }
 
 double Arithmetic::roundUp(double n) {
-    return std::ceil(n);
+    auto intPart = static_cast<long long>(n);
+    if (n > 0 && n > static_cast<double>(intPart)) {
+        return static_cast<double>(intPart + 1);
+    }
+    return static_cast<double>(intPart);
 }
 
 double Arithmetic::roundDown(double n) {
-    return std::floor(n);
+    auto intPart = static_cast<long long>(n);
+    if (n < 0 && n < static_cast<double>(intPart)) {
+        return static_cast<double>(intPart - 1);
+    }
+    return static_cast<double>(intPart);
 }
 
 double Arithmetic::roundToDecimalPlaces(double n, int places) {
-    double multiplier = std::pow(10.0, places);
-    return std::round(n * multiplier) / multiplier;
+    double multiplier = power(10.0, places);
+    return roundToNearest(n * multiplier) / multiplier;
 }
 
 // Number Properties
@@ -243,7 +258,7 @@ int Arithmetic::greatestCommonDivisor(int a, int b) {
     b = absolute(b);
 
     while (b != 0) {
-        int temp = b;
+        const int temp = b;
         b = a % b;
         a = temp;
     }

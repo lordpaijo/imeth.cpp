@@ -17,6 +17,7 @@ namespace Arithmetic {
 
     // Absolute Value and Sign
     double absolute(double n);
+    int absolute(int n); // don't mind me
     int sign(double n); // Returns -1, 0, or 1
 
     // Remainders and Divisibility
