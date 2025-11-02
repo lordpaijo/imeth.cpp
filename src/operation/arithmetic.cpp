@@ -27,23 +27,43 @@ double Arithmetic::divide(double a, double b) {
 
 // Power and Roots
 double Arithmetic::power(double base, int exponent) {
-    return std::pow(base, exponent);
+    double result = 1.0;
+    for (int i = 0; i < exponent; i++) {
+        result *= base;
+    }
+    return result;
 }
 
 double Arithmetic::squareRoot(double n) {
     if (n < 0) {
         throw std::invalid_argument("Cannot take square root of negative number");
     }
-    return std::sqrt(n);
+    auto z = n;
+    for (int i = 0; i < 10; i++) { z = (z + n / z) / 2.0; }
+    return z;
 }
 
 double Arithmetic::cubeRoot(double n) {
-    return std::cbrt(n);
+    if (n == 0) return 0;
+    bool negative = n < 0;
+    if (negative) n = -n;
+
+    double x = n;
+    double epsilon = 1e-10;
+
+    while (true) {
+        double x_next = (2.0 * x + n / (x * x)) / 3.0;
+        if (absolute(x_next - x) < epsilon) break;
+
+        x = x_next;
+    }
+
+    return negative ? -x : x;
 }
 
 // Absolute Value and Sign
 double Arithmetic::absolute(double n) {
-    return std::abs(n);
+    return n < 0 ? -n : n;
 }
 
 int Arithmetic::sign(double n) {
@@ -219,8 +239,8 @@ bool Arithmetic::isPrime(int n) {
 }
 
 int Arithmetic::greatestCommonDivisor(int a, int b) {
-    a = std::abs(a);
-    b = std::abs(b);
+    a = absolute(a);
+    b = absolute(b);
 
     while (b != 0) {
         int temp = b;
@@ -232,18 +252,18 @@ int Arithmetic::greatestCommonDivisor(int a, int b) {
 
 int Arithmetic::leastCommonMultiple(int a, int b) {
     if (a == 0 || b == 0) return 0;
-    return std::abs(a * b) / greatestCommonDivisor(a, b);
+    return absolute(a * b) / greatestCommonDivisor(a, b);
 }
 
 // Distance and Pythagorean
 double Arithmetic::distance2D(double x1, double y1, double x2, double y2) {
     double dx = x2 - x1;
     double dy = y2 - y1;
-    return std::sqrt(dx * dx + dy * dy);
+    return squareRoot(dx * dx + dy * dy);
 }
 
 double Arithmetic::pythagorean(double a, double b) {
-    return std::sqrt(a * a + b * b);
+    return squareRoot(a * a + b * b);
 }
 
 // Temperature Conversions

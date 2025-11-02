@@ -8,6 +8,7 @@ namespace Arithmetic {
     double subtract(double a, double b);
     double multiply(double a, double b);
     double divide(double a, double b);
+    double modulo(double a, double b);
 
     // Power and Roots
     double power(double base, int exponent);
