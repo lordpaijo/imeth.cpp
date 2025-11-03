@@ -14,6 +14,6 @@ namespace LinearAlgebra {
 }; // namespace LinearAlgebra
 namespace QuadraticEquation {
   using Solution = std::variant<std::monostate, double, std::pair<double, double>>;
-   Solution solve(double a, double b, double c);
+  Solution solve(double a, double b, double c);
 }; // namespace QuadraticEquation
 } // namespace imeth
