@@ -1,5 +1,5 @@
 #include "../include/imeth/geometry/2D.hpp"
-#include <cmath>
+#include "../include/imeth/operation/arithmetic.hpp"
 #include <numbers>
 
 namespace imeth {
@@ -24,7 +24,7 @@ double Triangle::area() const {
 }
 
 double Triangle::perimeter() const {
-    double side = std::sqrt((base_ / 2) * (base_ / 2) + height_ * height_);
+    double side = imeth::Arithmetic::squareRoot((base_ / 2) * (base_ / 2) + height_ * height_);
     return base_ + 2 * side;
 }
 
@@ -37,7 +37,7 @@ double Square::perimeter() const {
 }
 
 double Pentagon::area() const {
-    return 0.25 * std::sqrt(5 * (5 + 2 * std::sqrt(5))) * side_ * side_;
+    return 0.25 * imeth::Arithmetic::squareRoot(5 * (5 + 2 * imeth::Arithmetic::squareRoot(5))) * side_ * side_;
 }
 
 double Pentagon::perimeter() const {
@@ -45,7 +45,7 @@ double Pentagon::perimeter() const {
 }
 
 double Hexagon::area() const {
-    return (3 * std::sqrt(3) / 2) * side_ * side_;
+    return (3 * imeth::Arithmetic::squareRoot(3) / 2) * side_ * side_;
 }
 
 double Hexagon::perimeter() const {
@@ -53,7 +53,7 @@ double Hexagon::perimeter() const {
 }
 
 double Octagon::area() const {
-    return 2 * (1 + std::sqrt(2)) * side_ * side_;
+    return 2 * (1 + imeth::Arithmetic::squareRoot(2)) * side_ * side_;
 }
 
 double Octagon::perimeter() const {
