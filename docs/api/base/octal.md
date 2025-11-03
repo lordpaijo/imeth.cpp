@@ -1,6 +1,6 @@
 # Octal
 
-The `Octal` class provides functions for working with octal numbers (base 8). Octal is commonly used in computing, especially in Unix/Linux file permissions.
+The octal chapter provides functions for working with octal numbers (base 8). Octal is commonly used in computing, especially in Unix/Linux file permissions.
 
 ## Overview
 

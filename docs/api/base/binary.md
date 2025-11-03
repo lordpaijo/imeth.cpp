@@ -1,6 +1,6 @@
 # Binary
 
-The `Binary` class provides specialized functions for working with binary numbers (base 2), including bitwise operations that are essential in computer science.
+The binary chapter provides specialized functions for working with binary numbers (base 2), including bitwise operations that are essential in computer science.
 
 ## Overview
 

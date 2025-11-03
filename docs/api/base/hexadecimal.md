@@ -1,6 +1,6 @@
 # Hexadecimal
 
-The `Hexadecimal` class provides functions for working with hexadecimal numbers (base 16). Hex is widely used in computing for colors, memory addresses, and more.
+The hexadecimal chapter provides functions for working with hexadecimal numbers (base 16). Hex is widely used in computing for colors, memory addresses, and more.
 
 ## Overview
 
