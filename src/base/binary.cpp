@@ -1,4 +1,5 @@
 #include "../include/imeth/base/binary.hpp"
+#include "../include/imeth/operation/arithmetic.hpp"
 #include <stdexcept>
 
 namespace imeth {
@@ -7,8 +8,8 @@ namespace imeth {
 std::string Binary::fromDecimal(int decimal) {
     if (decimal == 0) return "0";
 
-    bool negative = decimal < 0;
-    decimal = abs(decimal);
+    const bool negative = decimal < 0;
+    decimal = imeth::Arithmetic::absolute(decimal);
 
     std::string result = "";
     while (decimal > 0) {
@@ -25,7 +26,7 @@ int Binary::toDecimal(const std::string& binary) {
         throw std::invalid_argument("Empty binary string");
     }
 
-    bool negative = (binary[0] == '-');
+    const bool negative = (binary[0] == '-');
     size_t start = negative ? 1 : 0;
 
     int result = 0;
@@ -45,39 +46,39 @@ int Binary::toDecimal(const std::string& binary) {
 
 // Arithmetic operations
 std::string Binary::add(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 + dec2);
 }
 
 std::string Binary::subtract(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 - dec2);
 }
 
 std::string Binary::multiply(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 * dec2);
 }
 
 // Bitwise operations
 std::string Binary::bitwiseAND(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 & dec2);
 }
 
 std::string Binary::bitwiseOR(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 | dec2);
 }
 
 std::string Binary::bitwiseXOR(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 ^ dec2);
 }
 
@@ -92,7 +93,7 @@ std::string Binary::bitwiseNOT(const std::string& binary) {
 }
 
 std::string Binary::leftShift(const std::string& binary, int positions) {
-    int decimal = toDecimal(binary);
+    const int decimal = toDecimal(binary);
     return fromDecimal(decimal << positions);
 }
 
@@ -121,7 +122,7 @@ std::string Binary::padLeft(const std::string& binary, size_t length) {
 
 int Binary::countOnes(const std::string& binary) {
     int count = 0;
-    for (char c : binary) {
+    for (const char c : binary) {
         if (c == '1') count++;
     }
     return count;
@@ -129,7 +130,7 @@ int Binary::countOnes(const std::string& binary) {
 
 int Binary::countZeros(const std::string& binary) {
     int count = 0;
-    for (char c : binary) {
+    for (const char c : binary) {
         if (c == '0') count++;
     }
     return count;

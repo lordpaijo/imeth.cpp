@@ -1,4 +1,5 @@
 #include "../include/imeth/base/octal.hpp"
+#include "../include/imeth/operation/arithmetic.hpp"
 #include <stdexcept>
 
 namespace imeth {
@@ -8,7 +9,7 @@ std::string Octal::fromDecimal(int decimal) {
     if (decimal == 0) return "0";
 
     bool negative = decimal < 0;
-    decimal = abs(decimal);
+    decimal = imeth::Arithmetic::absolute(decimal);
 
     std::string result = "";
     while (decimal > 0) {
@@ -31,7 +32,7 @@ int Octal::toDecimal(const std::string& octal) {
     int result = 0;
     int power = 1;
 
-    for (int i = octal.length() - 1; i >= (int)start; --i) {
+    for (int i = octal.length() - 1; i >= static_cast<int>(start); --i) {
         int digit = octal[i] - '0';
         if (digit < 0 || digit > 7) {
             throw std::invalid_argument("Invalid octal digit");
@@ -45,20 +46,20 @@ int Octal::toDecimal(const std::string& octal) {
 
 // Arithmetic operations
 std::string Octal::add(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 + dec2);
 }
 
 std::string Octal::subtract(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 - dec2);
 }
 
 std::string Octal::multiply(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 * dec2);
 }
 

@@ -1,4 +1,5 @@
 #include "../include/imeth/base/hexadecimal.hpp"
+#include "../include/imeth/operation/arithmetic.hpp"
 #include <algorithm>
 #include <cctype>
 #include <stdexcept>
@@ -17,7 +18,7 @@ int Hexadecimal::charToDigit(char c) {
     throw std::invalid_argument("Invalid hexadecimal character");
 }
 
-char Hexadecimal::digitToChar(int digit) {
+char Hexadecimal::digitToChar(const int digit) {
     if (digit < 0 || digit > 15) {
         throw std::invalid_argument("Digit out of range");
     }
@@ -32,7 +33,7 @@ std::string Hexadecimal::fromDecimal(int decimal) {
     if (decimal == 0) return "0";
 
     bool negative = decimal < 0;
-    decimal = abs(decimal);
+    decimal = imeth::Arithmetic::absolute(decimal);
 
     std::string result = "";
     while (decimal > 0) {
@@ -55,7 +56,7 @@ int Hexadecimal::toDecimal(const std::string& hex) {
     int result = 0;
     int power = 1;
 
-    for (int i = hex.length() - 1; i >= (int)start; --i) {
+    for (int i = hex.length() - 1; i >= static_cast<int>(start); --i) {
         int digit = charToDigit(hex[i]);
         result += digit * power;
         power *= 16;
@@ -66,20 +67,20 @@ int Hexadecimal::toDecimal(const std::string& hex) {
 
 // Arithmetic operations
 std::string Hexadecimal::add(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 + dec2);
 }
 
 std::string Hexadecimal::subtract(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 - dec2);
 }
 
 std::string Hexadecimal::multiply(const std::string& a, const std::string& b) {
-    int dec1 = toDecimal(a);
-    int dec2 = toDecimal(b);
+    const int dec1 = toDecimal(a);
+    const int dec2 = toDecimal(b);
     return fromDecimal(dec1 * dec2);
 }
 
@@ -99,13 +100,13 @@ bool Hexadecimal::isValid(const std::string& hex) {
 
 std::string Hexadecimal::toUpperCase(const std::string& hex) {
     std::string result = hex;
-    std::transform(result.begin(), result.end(), result.begin(), ::toupper);
+    std::ranges::transform(result, result.begin(), ::toupper);
     return result;
 }
 
 std::string Hexadecimal::toLowerCase(const std::string& hex) {
     std::string result = hex;
-    std::transform(result.begin(), result.end(), result.begin(), ::tolower);
+    std::ranges::transform(result, result.begin(), ::tolower);
     return result;
 }
 

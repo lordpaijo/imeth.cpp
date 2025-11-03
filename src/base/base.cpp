@@ -1,4 +1,5 @@
 #include "../include/imeth/base/base.hpp"
+#include "../include/imeth/operation/arithmetic.hpp"
 #include <algorithm>
 #include <cctype>
 #include <stdexcept>
@@ -26,15 +27,15 @@ int Base::charToDigit(char c) {
 }
 
 // Convert decimal to any base
-std::string Base::decimalToBase(int decimal, int base) {
+std::string Base::decimalToBase(int decimal, const int base) {
     if (base < 2 || base > 36) {
         throw std::invalid_argument("Base must be between 2 and 36");
     }
 
     if (decimal == 0) return "0";
 
-    bool negative = decimal < 0;
-    decimal = abs(decimal);
+    const bool negative = decimal < 0;
+    decimal = imeth::Arithmetic::absolute(decimal);
 
     std::string result = "";
     while (decimal > 0) {
@@ -47,19 +48,19 @@ std::string Base::decimalToBase(int decimal, int base) {
     return result;
 }
 
-std::string Base::decimalToBinary(int decimal) {
+std::string Base::decimalToBinary(const int decimal) {
     return decimalToBase(decimal, 2);
 }
 
-std::string Base::decimalToTrinary(int decimal) {
+std::string Base::decimalToTrinary(const int decimal) {
     return decimalToBase(decimal, 3);
 }
 
-std::string Base::decimalToOctal(int decimal) {
+std::string Base::decimalToOctal(const int decimal) {
     return decimalToBase(decimal, 8);
 }
 
-std::string Base::decimalToHexadecimal(int decimal) {
+std::string Base::decimalToHexadecimal(const int decimal) {
     return decimalToBase(decimal, 16);
 }
 
@@ -73,14 +74,14 @@ int Base::baseToDecimal(const std::string& number, int base) {
         throw std::invalid_argument("Empty number string");
     }
 
-    bool negative = (number[0] == '-');
+    const bool negative = (number[0] == '-');
     size_t start = negative ? 1 : 0;
 
     int result = 0;
     int power = 1;
 
     // Process from right to left
-    for (int i = number.length() - 1; i >= (int)start; --i) {
+    for (int i = number.length() - 1; i >= static_cast<int>(start); --i) {
         int digit = charToDigit(number[i]);
         if (digit >= base) {
             throw std::invalid_argument("Invalid digit for base");
@@ -109,32 +110,32 @@ int Base::hexadecimalToDecimal(const std::string& hex) {
 }
 
 // Direct conversion between bases
-std::string Base::convert(const std::string& number, int fromBase, int toBase) {
-    int decimal = baseToDecimal(number, fromBase);
+std::string Base::convert(const std::string& number, const int fromBase, const int toBase) {
+    const int decimal = baseToDecimal(number, fromBase);
     return decimalToBase(decimal, toBase);
 }
 
 // Arithmetic operations in different bases
-std::string Base::addInBase(const std::string& num1, const std::string& num2, int base) {
-    int dec1 = baseToDecimal(num1, base);
-    int dec2 = baseToDecimal(num2, base);
+std::string Base::addInBase(const std::string& num1, const std::string& num2, const int base) {
+    const int dec1 = baseToDecimal(num1, base);
+    const int dec2 = baseToDecimal(num2, base);
     return decimalToBase(dec1 + dec2, base);
 }
 
-std::string Base::subtractInBase(const std::string& num1, const std::string& num2, int base) {
-    int dec1 = baseToDecimal(num1, base);
-    int dec2 = baseToDecimal(num2, base);
+std::string Base::subtractInBase(const std::string& num1, const std::string& num2, const int base) {
+    const int dec1 = baseToDecimal(num1, base);
+    const int dec2 = baseToDecimal(num2, base);
     return decimalToBase(dec1 - dec2, base);
 }
 
-std::string Base::multiplyInBase(const std::string& num1, const std::string& num2, int base) {
-    int dec1 = baseToDecimal(num1, base);
-    int dec2 = baseToDecimal(num2, base);
+std::string Base::multiplyInBase(const std::string& num1, const std::string& num2, const int base) {
+    const int dec1 = baseToDecimal(num1, base);
+    const int dec2 = baseToDecimal(num2, base);
     return decimalToBase(dec1 * dec2, base);
 }
 
 // Utility functions
-bool Base::isValidInBase(const std::string& number, int base) {
+bool Base::isValidInBase(const std::string& number, const int base) {
     if (number.empty() || base < 2 || base > 36) {
         return false;
     }
@@ -157,7 +158,7 @@ bool Base::isValidInBase(const std::string& number, int base) {
 
 std::string Base::toUpperCase(const std::string& str) {
     std::string result = str;
-    std::transform(result.begin(), result.end(), result.begin(), ::toupper);
+    std::ranges::transform(result, result.begin(), ::toupper);
     return result;
 }
 
