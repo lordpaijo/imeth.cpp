@@ -1,4 +1,5 @@
 #include "../include/imeth/linear/matrix.hpp"
+#include "../include/imeth/operation/arithmetic.hpp"
 #include <stdexcept>
 #include <cmath>
 
@@ -87,7 +88,7 @@ Vector Solver::gaussian_elimination(const Matrix& A, const Vector& b) {
 
     for (size_t i = 0; i < n; ++i) {
         double pivot = M(i, i);
-        if (std::fabs(pivot) < 1e-12)
+        if (imeth::Arithmetic::absolute(pivot) < 1e-12)
             throw std::runtime_error("Singular matrix");
 
         for (size_t j = i; j < n; ++j)

@@ -1,8 +1,27 @@
 cmake_minimum_required(VERSION 3.15)
-project(imeth LANGUAGES CXX VERSION 1.0.0)
+find_package(Git QUIET)
+if(GIT_FOUND)
+    execute_process(
+            COMMAND ${GIT_EXECUTABLE} describe --tags --abbrev=0
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            OUTPUT_VARIABLE GIT_VERSION
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            ERROR_QUIET
+    )
+    if(GIT_VERSION)
+        string(REGEX REPLACE "^v" "" GIT_VERSION ${GIT_VERSION})
+        project(imeth LANGUAGES CXX VERSION ${GIT_VERSION})
+    else()
+        project(imeth LANGUAGES CXX VERSION 1.0.0)
+    endif()
+else()
+    project(imeth LANGUAGES CXX VERSION 1.0.0)
+endif()
+project(imeth LANGUAGES CXX VERSION ${PROJECT_VERSION})
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # ======================
 # Main library

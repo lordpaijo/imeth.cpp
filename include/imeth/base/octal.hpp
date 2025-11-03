@@ -2,8 +2,7 @@
 #include <string>
 
 namespace imeth {
-class Octal {
-public:
+namespace Octal {
     // Conversion
     static std::string fromDecimal(int decimal);
     static int toDecimal(const std::string& octal);
@@ -16,5 +15,5 @@ public:
     // Utility
     static bool isValid(const std::string& octal);
     static std::string padLeft(const std::string& octal, size_t length);
-};
+}; // namespace octal
 } // namespace imeth

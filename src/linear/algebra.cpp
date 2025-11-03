@@ -1,17 +1,17 @@
 #include "../include/imeth/linear/algebra.hpp"
-#include <cmath>
+#include "../include/imeth/operation/arithmetic.hpp"
 #include <algorithm>
 
 namespace imeth {
 
-std::optional<double> LinearAlgebra::solve_1v(double a, double b) {
+std::optional<double> LinearAlgebra::solve_1v(const double a, const double b) {
   if (a == 0.0) return std::nullopt;
   return -b / a;
 }
 
 std::optional<std::pair<double, double>> LinearAlgebra::solve_2v(
-  double a1, double b1, double c1,
-  double a2, double b2, double c2
+  const double a1, const double b1, const double c1,
+  const double a2, const double b2, const double c2
 ) {
   double new_b1, new_b2, new_c1, new_c2;
 
@@ -45,8 +45,8 @@ std::optional<std::pair<double, double>> LinearAlgebra::solve_2v(
 }
 
 QuadraticEquation::Solution QuadraticEquation::solve(double a, double b, double c) {
-  if (std::abs(a) < 1e-10) {
-    if (std::abs(b) < 1e-10) {
+  if (imeth::Arithmetic::absolute(a) < 1e-10) {
+    if (imeth::Arithmetic::absolute(b) < 1e-10) {
       return std::monostate{};
     }
     return -c / b;
@@ -61,12 +61,12 @@ QuadraticEquation::Solution QuadraticEquation::solve(double a, double b, double 
   }
 
   // One solution (repeated root)
-  if (std::abs(discriminant) < 1e-10) {
+  if (imeth::Arithmetic::absolute(discriminant) < 1e-10) {
     return -b / (2 * a);
   }
 
   // Two distinct solutions
-  double sqrt_discriminant = std::sqrt(discriminant);
+  double sqrt_discriminant = imeth::Arithmetic::squareRoot(discriminant);
   double x1 = (-b - sqrt_discriminant) / (2 * a);
   double x2 = (-b + sqrt_discriminant) / (2 * a);
 
