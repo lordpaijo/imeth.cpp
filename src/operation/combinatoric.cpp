@@ -5,9 +5,10 @@
 #include "../include/imeth/operation/combinatoric.hpp"
 #include "../include/imeth/operation/arithmetic.hpp"
 #include <algorithm>
+#include <cstdint>
 #include <numeric>
 
-namespace imeth::combinatorics {
+namespace imeth::Combinatorics {
     uint64_t factorial(uint64_t n) {
         if (n > 20) {
             throw std::overflow_error("Factorial overflow: n too large");
@@ -66,7 +67,7 @@ namespace imeth::combinatorics {
         return result;
     }
 
-    namespace probability {
+    namespace Probability {
 
         // Dice implementation
         Dice::Dice() : numbers{1, 2, 3, 4, 5, 6} {}
@@ -207,7 +208,7 @@ namespace imeth::combinatorics {
             return 36.0 / 52.0; // 9 number cards per suit * 4 suits
         }
 
-        namespace functions {
+        namespace Functions {
             double binomial_probability(const uint32_t n, const uint32_t k, const double p) {
                 return combination(n, k) * Arithmetic::power(p, k) * Arithmetic::power(1.0 - p, n - k);
             }
@@ -235,7 +236,7 @@ namespace imeth::combinatorics {
         }
     }
 
-    namespace counting {
+    namespace Counting {
         uint64_t derangement(const uint64_t n) {
             if (n == 0) return 1;
             if (n == 1) return 0;
@@ -299,7 +300,7 @@ namespace imeth::combinatorics {
         }
     }
 
-    namespace sets {
+    namespace Sets {
         template<typename T>
         std::vector<std::vector<T>> generate_combinations(const std::vector<T>& items, uint32_t k) {
             std::vector<std::vector<T>> result;

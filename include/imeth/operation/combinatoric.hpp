@@ -7,8 +7,9 @@
 
 #include <vector>
 #include <array>
+#include <cstdint>
 
-namespace imeth::combinatorics {
+namespace imeth::Combinatorics {
 
     uint64_t factorial(uint64_t n);
     uint64_t combination(uint64_t n, uint64_t k);
@@ -17,7 +18,7 @@ namespace imeth::combinatorics {
     uint64_t permutation_with_repetition(uint64_t n, const std::vector<uint64_t>& repetitions);
     uint64_t permutation_full_repetition(uint64_t n, uint64_t r);
 
-    namespace probability {
+    namespace Probability {
 
         class Dice {
         private:
@@ -76,7 +77,7 @@ namespace imeth::combinatorics {
             static double probability_number_card() ;
         };
 
-        namespace functions {
+        namespace Functions {
             double binomial_probability(uint32_t n, uint32_t k, double p);
             double geometric_probability(uint32_t k, double p);
             double hypergeometric_probability(uint32_t N, uint32_t K, uint32_t n, uint32_t k);
@@ -86,7 +87,7 @@ namespace imeth::combinatorics {
         }
     }
 
-    namespace counting {
+    namespace Counting {
         uint64_t derangement(uint64_t n);
         uint64_t stirling_second_kind(uint64_t n, uint64_t k);
         uint64_t catalan_number(uint64_t n);
@@ -94,7 +95,7 @@ namespace imeth::combinatorics {
         std::vector<std::vector<uint64_t>> pascal_triangle(uint32_t rows);
     }
 
-    namespace sets {
+    namespace Sets {
         template<typename T>
         std::vector<std::vector<T>> generate_combinations(const std::vector<T>& items, uint32_t k);
 
