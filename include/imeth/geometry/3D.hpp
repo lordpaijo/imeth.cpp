@@ -11,7 +11,7 @@ public:
     virtual double volume() const = 0;
 };
 
-class Sphere : public Shape3D {
+class Sphere final : public Shape3D {
 public:
     explicit Sphere(double radius);
     ~Sphere() override = default;
@@ -23,7 +23,7 @@ private:
     double radius_;
 };
 
-class Cube : public Shape3D {
+class Cube final : public Shape3D {
 public:
     explicit Cube(double side);
     ~Cube() override = default;
@@ -35,7 +35,7 @@ private:
     double side_;
 };
 
-class Cylinder : public Shape3D {
+class Cylinder final : public Shape3D {
 public:
     Cylinder(double radius, double height);
     ~Cylinder() override = default;
@@ -48,7 +48,7 @@ private:
     double height_;
 };
 
-class Cone : public Shape3D {
+class Cone final : public Shape3D {
 public:
     Cone(double radius, double height);
     ~Cone() override = default;
@@ -61,7 +61,7 @@ private:
     double height_;
 };
 
-class Torus : public Shape3D {
+class Torus final : public Shape3D {
 public:
     Torus(double major_radius, double minor_radius);
     ~Torus() override = default;

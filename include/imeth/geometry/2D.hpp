@@ -10,9 +10,9 @@ public:
     virtual double perimeter() const = 0;
 };
 
-class Circle : public Shape2D {
+class Circle final : public Shape2D {
 public:
-    Circle(double radius) : radius_(radius) {}
+    Circle(const double radius) : radius_(radius) {}
     ~Circle() override = default;
 
     double area() const override;
@@ -22,9 +22,9 @@ private:
     double radius_;
 };
 
-class Rectangle : public Shape2D {
+class Rectangle final : public Shape2D {
 public:
-    Rectangle(double width, double height) : width_(width), height_(height) {}
+    Rectangle(const double width, const double height) : width_(width), height_(height) {}
     ~Rectangle() override = default;
 
     double area() const override;
@@ -35,9 +35,9 @@ private:
     double height_;
 };
 
-class Triangle : public Shape2D {
+class Triangle final : public Shape2D {
 public:
-    Triangle(double base, double height) : base_(base), height_(height) {}
+    Triangle(const double base, const double height) : base_(base), height_(height) {}
     ~Triangle() override = default;
 
     double area() const override;
@@ -48,9 +48,9 @@ private:
     double height_;
 };
 
-class Square : public Shape2D {
+class Square final : public Shape2D {
 public:
-    Square(double side) : side_(side) {}
+    explicit Square(const double side) : side_(side) {}
     ~Square() override = default;
 
     double area() const override;
@@ -60,9 +60,9 @@ private:
     double side_;
 };
 
-class Pentagon : public Shape2D {
+class Pentagon final : public Shape2D {
 public:
-    Pentagon(double side) : side_(side) {}
+    explicit Pentagon(const double side) : side_(side) {}
     ~Pentagon() override = default;
 
     double area() const override;
@@ -72,9 +72,9 @@ private:
     double side_;
 };
 
-class Hexagon : public Shape2D {
+class Hexagon final : public Shape2D {
 public:
-    Hexagon(double side) : side_(side) {}
+    explicit Hexagon(const double side) : side_(side) {}
     ~Hexagon() override = default;
 
     double area() const override;
@@ -84,9 +84,9 @@ private:
     double side_;
 };
 
-class Octagon : public Shape2D {
+class Octagon final : public Shape2D {
 public:
-    Octagon(double side) : side_(side) {}
+    explicit Octagon(const double side) : side_(side) {}
     ~Octagon() override = default;
 
     double area() const override;
