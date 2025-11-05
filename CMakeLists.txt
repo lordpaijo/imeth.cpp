@@ -30,7 +30,9 @@ file(GLOB_RECURSE IMETH_SOURCES
     CONFIGURE_DEPENDS
     "src/*.cpp"
 )
-add_library(imeth STATIC ${IMETH_SOURCES})
+add_library(imeth STATIC ${IMETH_SOURCES}
+        include/imeth/operation/combinatoric.hpp
+        src/operation/combinatoric.cpp)
 
 # Proper include handling (for both build & install)
 target_include_directories(imeth
