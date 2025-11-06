@@ -1,73 +1,82 @@
 #include "../include/imeth/linear/matrix.hpp"
 #include "../include/imeth/operation/arithmetic.hpp"
 #include <stdexcept>
-#include <cmath>
 
 namespace imeth {
 
 Matrix::Matrix(size_t rows, size_t cols)
-    : m_data(rows, std::vector<double>(cols, 0.0)) {}
+    : m_data(rows * cols, 0.0), m_rows(rows), m_cols(cols) {}
 
-Matrix::Matrix(std::initializer_list<std::vector<double>> data)
-    : m_data(data) {}
+Matrix::Matrix(std::initializer_list<std::initializer_list<double>> data)
+    : m_rows(data.size()), m_cols(data.size() > 0 ? data.begin()->size() : 0) {
+    m_data.reserve(m_rows * m_cols);
+    for (const auto& row : data) {
+        if (row.size() != m_cols)
+            throw std::invalid_argument("All rows must have the same number of columns");
+        for (double val : row)
+            m_data.push_back(val);
+    }
+}
 
 double& Matrix::operator()(size_t r, size_t c) {
-    return m_data.at(r).at(c);
+    if (r >= m_rows || c >= m_cols)
+        throw std::out_of_range("Matrix index out of range");
+    return m_data[r * m_cols + c];
 }
 
 double Matrix::operator()(size_t r, size_t c) const {
-    return m_data.at(r).at(c);
+    if (r >= m_rows || c >= m_cols)
+        throw std::out_of_range("Matrix index out of range");
+    return m_data[r * m_cols + c];
 }
 
-size_t Matrix::rows() const { return m_data.size(); }
-size_t Matrix::cols() const { return m_data.empty() ? 0 : m_data[0].size(); }
+size_t Matrix::rows() const { return m_rows; }
+size_t Matrix::cols() const { return m_cols; }
 
 Matrix Matrix::identity(size_t n) {
     Matrix I(n, n);
-    for (size_t i = 0; i < n; ++i) I(i, i) = 1.0;
+    for (size_t i = 0; i < n; ++i)
+        I(i, i) = 1.0;
     return I;
 }
 
 Matrix Matrix::transpose() const {
-    size_t r = rows(), c = cols();
-    Matrix t(c, r);
-    for (size_t i = 0; i < r; ++i)
-        for (size_t j = 0; j < c; ++j)
-            t(j, i) = m_data[i][j];
+    Matrix t(m_cols, m_rows);
+    for (size_t i = 0; i < m_rows; ++i)
+        for (size_t j = 0; j < m_cols; ++j)
+            t(j, i) = (*this)(i, j);
     return t;
 }
 
 Matrix Matrix::operator*(const Matrix& rhs) const {
-    if (cols() != rhs.rows())
+    if (m_cols != rhs.m_rows)
         throw std::invalid_argument("Matrix dimensions mismatch for multiplication");
 
-    Matrix result(rows(), rhs.cols());
-    for (size_t i = 0; i < rows(); ++i)
-        for (size_t j = 0; j < rhs.cols(); ++j)
-            for (size_t k = 0; k < cols(); ++k)
-                result(i, j) += m_data[i][k] * rhs(k, j);
+    Matrix result(m_rows, rhs.m_cols);
+    for (size_t i = 0; i < m_rows; ++i)
+        for (size_t j = 0; j < rhs.m_cols; ++j)
+            for (size_t k = 0; k < m_cols; ++k)
+                result(i, j) += (*this)(i, k) * rhs(k, j);
     return result;
 }
 
 Matrix Matrix::operator+(const Matrix& rhs) const {
-    if (rows() != rhs.rows() || cols() != rhs.cols())
+    if (m_rows != rhs.m_rows || m_cols != rhs.m_cols)
         throw std::invalid_argument("Matrix dimensions mismatch for addition");
 
-    Matrix result(rows(), cols());
-    for (size_t i = 0; i < rows(); ++i)
-        for (size_t j = 0; j < cols(); ++j)
-            result(i, j) = m_data[i][j] + rhs(i, j);
+    Matrix result(m_rows, m_cols);
+    for (size_t i = 0; i < m_data.size(); ++i)
+        result.m_data[i] = m_data[i] + rhs.m_data[i];
     return result;
 }
 
 Matrix Matrix::operator-(const Matrix& rhs) const {
-    if (rows() != rhs.rows() || cols() != rhs.cols())
+    if (m_rows != rhs.m_rows || m_cols != rhs.m_cols)
         throw std::invalid_argument("Matrix dimensions mismatch for subtraction");
 
-    Matrix result(rows(), cols());
-    for (size_t i = 0; i < rows(); ++i)
-        for (size_t j = 0; j < cols(); ++j)
-            result(i, j) = m_data[i][j] - rhs(i, j);
+    Matrix result(m_rows, m_cols);
+    for (size_t i = 0; i < m_data.size(); ++i)
+        result.m_data[i] = m_data[i] - rhs.m_data[i];
     return result;
 }
 
@@ -120,7 +129,7 @@ Vector Solver::gauss_jordan(const Matrix& A, const Vector& b) {
 
     for (size_t i = 0; i < n; ++i) {
         double pivot = M(i, i);
-        if (std::fabs(pivot) < 1e-12)
+        if (imeth::Arithmetic::absolute(pivot) < 1e-12)
             throw std::runtime_error("Singular matrix");
 
         for (size_t j = 0; j < n; ++j)
