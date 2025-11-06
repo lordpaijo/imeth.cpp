@@ -5,13 +5,8 @@
 #ifndef IMETH_COMBINATORIC_H
 #define IMETH_COMBINATORIC_H
 
-#include <cstdint>
 #include <vector>
 #include <array>
-#include <string>
-#include <map>
-#include <stdexcept>
-#include <memory>
 
 namespace imeth::Combinatorics {
 
@@ -43,7 +38,7 @@ namespace imeth::Combinatorics {
             double probability_sum_two_dice(int target) const;
             double probability_sum_n_dice(int target, int n_dice) const;
             double probability_all_same(int target, int n_dice) const;
-            double probability_all_different(int n_dice) const;
+            static double probability_all_different(int n_dice) ;
         };
 
         class Coin {
@@ -52,12 +47,12 @@ namespace imeth::Combinatorics {
 
         public:
             Coin();
-            double probability_of(char target) const;
-            double probability_consecutive(char target, unsigned int times) const;
-            double probability_at_least_one(char target, unsigned int times) const;
-            double probability_exactly_k(char target, unsigned int k, unsigned int n) const;
-            double probability_more_than_k(char target, unsigned int k, unsigned int n) const;
-            double probability_alternating(unsigned int n) const;
+            static double probability_of(char target) ;
+            static double probability_consecutive(char target, unsigned int times) ;
+            static double probability_at_least_one(char target, unsigned int times) ;
+            static double probability_exactly_k(char target, unsigned int k, unsigned int n) ;
+            static double probability_more_than_k(char target, unsigned int k, unsigned int n) ;
+            static double probability_alternating(unsigned int n) ;
         };
 
         class MarbleBag {
