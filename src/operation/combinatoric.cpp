@@ -1,9 +1,9 @@
 #include "../include/imeth/operation/combinatoric.hpp"
-#include <cmath>
+#include "../include/imeth/operation/arithmetic.hpp"
 #include <algorithm>
 #include <numeric>
+#include <iterator>
 #include <set>
-#include <unordered_map>
 
 namespace imeth::Combinatorics {
 
@@ -159,10 +159,10 @@ namespace imeth::Combinatorics {
                 }
             }
             if (!valid) return 0.0;
-            return std::pow(1.0 / 6.0, n_dice);
+            return Arithmetic::power(1.0 / 6.0, n_dice);
         }
 
-        double Dice::probability_all_different(const int n_dice) const {
+        double Dice::probability_all_different(const int n_dice) {
             if (n_dice > 6) return 0.0;
             double prob = 1.0;
             for (int i = 0; i < n_dice; ++i) {
@@ -173,27 +173,27 @@ namespace imeth::Combinatorics {
 
         Coin::Coin() : sides{'H', 'T'} {}
 
-        double Coin::probability_of(const char target) const {
+        double Coin::probability_of(const char target) {
             return (target == 'H' || target == 'T') ? 0.5 : 0.0;
         }
 
-        double Coin::probability_consecutive(const char target, const unsigned int times) const {
+        double Coin::probability_consecutive(const char target, const unsigned int times) {
             if (target != 'H' && target != 'T') return 0.0;
-            return std::pow(0.5, times);
+            return Arithmetic::power(0.5, times);
         }
 
-        double Coin::probability_at_least_one(const char target, const unsigned int times) const {
+        double Coin::probability_at_least_one(const char target, const unsigned int times) {
             if (target != 'H' && target != 'T') return 0.0;
-            return 1.0 - std::pow(0.5, times);
+            return 1.0 - Arithmetic::power(0.5, times);
         }
 
-        double Coin::probability_exactly_k(const char target, const unsigned int k, const unsigned int n) const {
+        double Coin::probability_exactly_k(const char target, const unsigned int k, const unsigned int n) {
             if (k > n || (target != 'H' && target != 'T')) return 0.0;
             uint_t ways = combination(n, k);
-            return ways * std::pow(0.5, n);
+            return ways * Arithmetic::power(0.5, n);
         }
 
-        double Coin::probability_more_than_k(const char target, const unsigned int k, const unsigned int n) const {
+        double Coin::probability_more_than_k(const char target, const unsigned int k, const unsigned int n) {
             double prob = 0.0;
             for (unsigned int i = k + 1; i <= n; ++i) {
                 prob += probability_exactly_k(target, i, n);
@@ -201,10 +201,10 @@ namespace imeth::Combinatorics {
             return prob;
         }
 
-        double Coin::probability_alternating(const unsigned int n) const {
+        double Coin::probability_alternating(const unsigned int n) {
             if (n == 0) return 0.0;
             if (n == 1) return 1.0;
-            return 2.0 / std::pow(2.0, n);
+            return 2.0 / Arithmetic::power(2.0, n);
         }
 
         MarbleBag::MarbleBag(const unsigned int red_count, const unsigned int white_count, const unsigned int blue_count)
@@ -450,11 +450,11 @@ namespace imeth::Combinatorics {
         namespace Functions {
             double binomial_probability(unsigned int n, unsigned int k, double p) {
                 uint_t ways = combination(n, k);
-                return ways * std::pow(p, k) * std::pow(1.0 - p, n - k);
+                return ways * Arithmetic::power(p, k) * Arithmetic::power(1.0 - p, n - k);
             }
 
             double geometric_probability(unsigned int k, double p) {
-                return std::pow(1.0 - p, k - 1) * p;
+                return Arithmetic::power(1.0 - p, k - 1) * p;
             }
 
             double hypergeometric_probability(const unsigned int N, const unsigned int K, const unsigned int n, const unsigned int k) {
@@ -509,13 +509,13 @@ namespace imeth::Combinatorics {
                 double result = 0.0;
                 size_t size = std::min(values.size(), probabilities.size());
                 for (size_t i = 0; i < size; ++i) {
-                    result += probabilities[i] * std::pow(values[i] - ev, 2);
+                    result += probabilities[i] * Arithmetic::power(values[i] - ev, 2);
                 }
                 return result;
             }
 
             double standard_deviation(const std::vector<double>& values, const std::vector<double>& probabilities) {
-                return std::sqrt(variance(values, probabilities));
+                return Arithmetic::squareRoot(variance(values, probabilities));
             }
         }
     }
