@@ -3,6 +3,9 @@
 #include <algorithm>
 #include <numeric>
 #include <iterator>
+#include <stdexcept>
+#include <vector>
+#include <string>
 #include <set>
 
 namespace imeth::Combinatorics {
