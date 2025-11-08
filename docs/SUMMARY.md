@@ -14,6 +14,7 @@
 - [Operation Category](./api/operation/README.md)
   - [Arithmetic](./api/operation/arithmetic.md)
   - [Logarithm](./api/operation/logarithm.md)
+  - [Combinatoric](./api/operation/combinatoric.md)
 - [Linear Category](./api/linear/README.md)
   - [Algebra](./api/linear/algebra.md)
   - [Matrix](./api/linear/matrix.md)
