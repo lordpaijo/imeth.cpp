@@ -3,6 +3,8 @@
 
 namespace imeth {
 namespace Arithmetic {
+    using uint_t = unsigned long long;
+
     // Basic Operations
     double add(double a, double b);
     double subtract(double a, double b);
@@ -61,11 +63,13 @@ namespace Arithmetic {
     double distance2D(double x1, double y1, double x2, double y2);
     double pythagorean(double a, double b); // Returns hypotenuse c
 
-    // Temperature Conversions
-    double celsiusToFahrenheit(double celsius);
-    double fahrenheitToCelsius(double fahrenheit);
-
     // Simple Interest
     double simpleInterest(double principal, double rate, double time);
+
+    // Sequences
+    void sequence(uint_t first, uint_t diff, unsigned int terms,
+                                std::vector<uint_t>& result);
+    uint_t sequence_sum(uint_t first, uint_t last, unsigned int terms);
+    uint_t nth_term(uint_t first, uint_t diff, unsigned int n);
 }; // namespace arithmetic
 } // namespace imeth

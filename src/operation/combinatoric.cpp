@@ -821,15 +821,6 @@ namespace imeth::Combinatorics {
     }
 
     namespace Sequences {
-        void arithmetic_sequence(uint_t first, uint_t diff, unsigned int terms,
-                                 std::vector<uint_t>& result) {
-            result.clear();
-            result.reserve(terms);
-            for (unsigned int i = 0; i < terms; ++i) {
-                result.push_back(first + i * diff);
-            }
-        }
-
         void geometric_sequence(uint_t first, uint_t ratio, unsigned int terms,
                                 std::vector<uint_t>& result) {
             result.clear();
@@ -841,10 +832,6 @@ namespace imeth::Combinatorics {
             }
         }
 
-        uint_t arithmetic_sum(uint_t first, uint_t last, unsigned int terms) {
-            return terms * (first + last) / 2;
-        }
-
         uint_t geometric_sum(uint_t first, uint_t ratio, unsigned int terms) {
             if (ratio == 1) return first * terms;
             uint_t power = 1;
@@ -852,10 +839,6 @@ namespace imeth::Combinatorics {
                 power *= ratio;
             }
             return first * (power - 1) / (ratio - 1);
-        }
-
-        uint_t nth_term_arithmetic(uint_t first, uint_t diff, unsigned int n) {
-            return first + (n - 1) * diff;
         }
 
         uint_t nth_term_geometric(uint_t first, uint_t ratio, unsigned int n) {

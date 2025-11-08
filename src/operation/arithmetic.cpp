@@ -2,22 +2,22 @@
 #include <algorithm>
 #include <stdexcept>
 
-namespace imeth {
+namespace imeth::Arithmetic {
 
 // Basic Operations
-double Arithmetic::add(double a, double b) {
+double add(double a, double b) {
     return a + b;
 }
 
-double Arithmetic::subtract(double a, double b) {
+double subtract(double a, double b) {
     return a - b;
 }
 
-double Arithmetic::multiply(double a, double b) {
+double multiply(double a, double b) {
     return a * b;
 }
 
-double Arithmetic::divide(double a, double b) {
+double divide(double a, double b) {
     if (b == 0) {
         throw std::invalid_argument("Cannot divide by zero");
     }
@@ -25,7 +25,7 @@ double Arithmetic::divide(double a, double b) {
 }
 
 // Power and Roots
-double Arithmetic::power(double base, int exponent) {
+double power(double base, int exponent) {
     double result = 1.0;
     for (int i = 0; i < exponent; i++) {
         result *= base;
@@ -33,7 +33,7 @@ double Arithmetic::power(double base, int exponent) {
     return result;
 }
 
-double Arithmetic::squareRoot(double n) {
+double squareRoot(double n) {
     if (n < 0) {
         throw std::invalid_argument("Cannot take square root of negative number");
     }
@@ -42,7 +42,7 @@ double Arithmetic::squareRoot(double n) {
     return z;
 }
 
-double Arithmetic::cubeRoot(double n) {
+double cubeRoot(double n) {
     if (n == 0) return 0;
     bool negative = n < 0;
     if (negative) n = -n;
@@ -61,53 +61,53 @@ double Arithmetic::cubeRoot(double n) {
 }
 
 // Absolute Value and Sign
-double Arithmetic::absolute(double n) {
+double absolute(double n) {
     return n < 0 ? -n : n;
 }
 
-int Arithmetic::absolute(int n) {
+int absolute(int n) {
     return n < 0 ? -n : n;
 }
 
-int Arithmetic::sign(double n) {
+int sign(double n) {
     if (n > 0) return 1;
     if (n < 0) return -1;
     return 0;
 }
 
 // Remainders and Divisibility
-int Arithmetic::remainder(int a, int b) {
+int remainder(int a, int b) {
     if (b == 0) {
         throw std::invalid_argument("Cannot find remainder with divisor of zero");
     }
     return a % b;
 }
 
-bool Arithmetic::isDivisible(int a, int b) {
+bool isDivisible(int a, int b) {
     if (b == 0) return false;
     return (a % b) == 0;
 }
 
 // Percentages
-double Arithmetic::percentOf(double percent, double total) {
+double percentOf(double percent, double total) {
     return (percent / 100.0) * total;
 }
 
-double Arithmetic::whatPercent(double part, double total) {
+double whatPercent(double part, double total) {
     if (total == 0) {
         throw std::invalid_argument("Total cannot be zero");
     }
     return (part / total) * 100.0;
 }
 
-double Arithmetic::percentIncrease(double original, double newValue) {
+double percentIncrease(double original, double newValue) {
     if (original == 0) {
         throw std::invalid_argument("Original value cannot be zero");
     }
     return ((newValue - original) / original) * 100.0;
 }
 
-double Arithmetic::percentDecrease(double original, double newValue) {
+double percentDecrease(double original, double newValue) {
     if (original == 0) {
         throw std::invalid_argument("Original value cannot be zero");
     }
@@ -115,14 +115,14 @@ double Arithmetic::percentDecrease(double original, double newValue) {
 }
 
 // Averages and Statistics
-double Arithmetic::average(const std::vector<double>& numbers) {
+double average(const std::vector<double>& numbers) {
     if (numbers.empty()) {
         throw std::invalid_argument("Cannot find average of empty list");
     }
     return sum(numbers) / numbers.size();
 }
 
-double Arithmetic::sum(const std::vector<double>& numbers) {
+double sum(const std::vector<double>& numbers) {
     double total = 0;
     for (const double n : numbers) {
         total += n;
@@ -130,25 +130,25 @@ double Arithmetic::sum(const std::vector<double>& numbers) {
     return total;
 }
 
-double Arithmetic::minimum(const std::vector<double>& numbers) {
+double minimum(const std::vector<double>& numbers) {
     if (numbers.empty()) {
         throw std::invalid_argument("Cannot find minimum of empty list");
     }
     return *std::ranges::min_element(numbers);
 }
 
-double Arithmetic::maximum(const std::vector<double>& numbers) {
+double maximum(const std::vector<double>& numbers) {
     if (numbers.empty()) {
         throw std::invalid_argument("Cannot find maximum of empty list");
     }
     return *std::ranges::max_element(numbers);
 }
 
-double Arithmetic::range(const std::vector<double>& numbers) {
+double range(const std::vector<double>& numbers) {
     return maximum(numbers) - minimum(numbers);
 }
 
-double Arithmetic::median(std::vector<double> numbers) {
+double median(std::vector<double> numbers) {
     if (numbers.empty()) {
         throw std::invalid_argument("Cannot find median of empty list");
     }
@@ -166,7 +166,7 @@ double Arithmetic::median(std::vector<double> numbers) {
 }
 
 // Fractions
-double Arithmetic::addFractions(const double num1, const double den1, const double num2, const double den2) {
+double addFractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero");
     }
@@ -177,7 +177,7 @@ double Arithmetic::addFractions(const double num1, const double den1, const doub
     return (newNum1 + newNum2) / commonDen;
 }
 
-double Arithmetic::subtractFractions(const double num1, const double den1, const double num2, const double den2) {
+double subtractFractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero");
     }
@@ -187,14 +187,14 @@ double Arithmetic::subtractFractions(const double num1, const double den1, const
     return (newNum1 - newNum2) / commonDen;
 }
 
-double Arithmetic::multiplyFractions(const double num1, const double den1, const double num2, const double den2) {
+double multiplyFractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero");
     }
     return (num1 * num2) / (den1 * den2);
 }
 
-double Arithmetic::divideFractions(const double num1, const double den1, const double num2, const double den2) {
+double divideFractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0 || num2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero and cannot divide by zero");
     }
@@ -202,7 +202,7 @@ double Arithmetic::divideFractions(const double num1, const double den1, const d
 }
 
 // Rounding
-double Arithmetic::roundToNearest(double n) {
+double roundToNearest(const double n) {
     if (n >= 0) {
         return static_cast<double>(static_cast<long long>(n + 0.5));
     } else {
@@ -211,37 +211,37 @@ double Arithmetic::roundToNearest(double n) {
     // this can give incorrect results... Do I have to wrap lround() from cmath here?????
 }
 
-double Arithmetic::roundUp(double n) {
-    auto intPart = static_cast<long long>(n);
+double roundUp(const double n) {
+    const auto intPart = static_cast<long long>(n);
     if (n > 0 && n > static_cast<double>(intPart)) {
         return static_cast<double>(intPart + 1);
     }
     return static_cast<double>(intPart);
 }
 
-double Arithmetic::roundDown(double n) {
-    auto intPart = static_cast<long long>(n);
+double roundDown(const double n) {
+    const auto intPart = static_cast<long long>(n);
     if (n < 0 && n < static_cast<double>(intPart)) {
         return static_cast<double>(intPart - 1);
     }
     return static_cast<double>(intPart);
 }
 
-double Arithmetic::roundToDecimalPlaces(double n, int places) {
-    double multiplier = power(10.0, places);
+double roundToDecimalPlaces(const double n, const int places) {
+    const double multiplier = power(10.0, places);
     return roundToNearest(n * multiplier) / multiplier;
 }
 
 // Number Properties
-bool Arithmetic::isEven(int n) {
+bool isEven(const int n) {
     return n % 2 == 0;
 }
 
-bool Arithmetic::isOdd(int n) {
+bool isOdd(const int n) {
     return n % 2 != 0;
 }
 
-bool Arithmetic::isPrime(int n) {
+bool isPrime(const int n) {
     if (n <= 1) return false;
     if (n == 2) return true;
     if (n % 2 == 0) return false;
@@ -253,7 +253,7 @@ bool Arithmetic::isPrime(int n) {
     return true;
 }
 
-int Arithmetic::greatestCommonDivisor(int a, int b) {
+int greatestCommonDivisor(int a, int b) {
     a = absolute(a);
     b = absolute(b);
 
@@ -265,33 +265,42 @@ int Arithmetic::greatestCommonDivisor(int a, int b) {
     return a;
 }
 
-int Arithmetic::leastCommonMultiple(int a, int b) {
+int leastCommonMultiple(const int a, const int b) {
     if (a == 0 || b == 0) return 0;
     return absolute(a * b) / greatestCommonDivisor(a, b);
 }
 
 // Distance and Pythagorean
-double Arithmetic::distance2D(double x1, double y1, double x2, double y2) {
-    double dx = x2 - x1;
-    double dy = y2 - y1;
+double distance2D(const double x1, const double y1, const double x2, const double y2) {
+    const double dx = x2 - x1;
+    const double dy = y2 - y1;
     return squareRoot(dx * dx + dy * dy);
 }
 
-double Arithmetic::pythagorean(double a, double b) {
+double pythagorean(const double a, const double b) {
     return squareRoot(a * a + b * b);
 }
 
-// Temperature Conversions
-double Arithmetic::celsiusToFahrenheit(double celsius) {
-    return (celsius * 9.0 / 5.0) + 32.0;
-}
-
-double Arithmetic::fahrenheitToCelsius(double fahrenheit) {
-    return (fahrenheit - 32.0) * 5.0 / 9.0;
-}
-
 // Simple Interest
-double Arithmetic::simpleInterest(double principal, double rate, double time) {
+double simpleInterest(const double principal, const double rate, const double time) {
     return principal * (rate / 100.0) * time;
 }
+
+// Sequnces
+void sequence(const uint_t first, const uint_t diff, unsigned int terms, std::vector<uint_t>& result) {
+    result.clear();
+    result.reserve(terms);
+    for (unsigned int i = 0; i < terms; ++i) {
+        result.push_back(first + i * diff);
+    }
+}
+
+uint_t sequence_sum(const uint_t first, const uint_t last, const unsigned int terms) {
+    return terms * (first + last) / 2;
+}
+
+uint_t nth_term(const uint_t first, const uint_t diff, const unsigned int n) {
+    return first + (n - 1) * diff;
+}
+
 } // namespace imeth

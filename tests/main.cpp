@@ -54,7 +54,7 @@ int main() {
     std::cout << "20 is what % of 50? = " << imeth::Arithmetic::whatPercent(20, 50) << "%\n\n";
 
     // Statistics
-    std::vector<double> grades = {85, 90, 78, 92, 88};
+    const std::vector<double> grades = {85, 90, 78, 92, 88};
     std::cout << "Grades: 85, 90, 78, 92, 88\n";
     std::cout << "Average: " << imeth::Arithmetic::average(grades) << "\n";
     std::cout << "Median: " << imeth::Arithmetic::median(grades) << "\n";
@@ -66,12 +66,8 @@ int main() {
     std::cout << "Is 20 even? " << (imeth::Arithmetic::isEven(20) ? "Yes" : "No") << "\n";
     std::cout << "GCD of 48 and 18 = " << imeth::Arithmetic::greatestCommonDivisor(48, 18) << "\n\n";
 
-    // Temperature
-    std::cout << "25°C in Fahrenheit = " << imeth::Arithmetic::celsiusToFahrenheit(25) << "°F\n";
-
     // Quadratic equation
-    auto result = imeth::QuadraticEquation::solve(1, -5, 6); // x² - 5x + 6 = 0
-    if (std::holds_alternative<std::pair<double, double>>(result)) {
+    if (auto result = imeth::QuadraticEquation::solve(1, -5, 6); std::holds_alternative<std::pair<double, double>>(result)) {
       auto [x1, x2] = std::get<std::pair<double, double>>(result);
       std::cout << "x1 = " << x1 << ", x2 = " << x2 << "\n";
     }

@@ -190,13 +190,9 @@ namespace imeth::Combinatorics {
     }
 
     namespace Sequences {
-        void arithmetic_sequence(uint_t first, uint_t diff, unsigned int terms,
-                                 std::vector<uint_t>& result);
         void geometric_sequence(uint_t first, uint_t ratio, unsigned int terms,
                                 std::vector<uint_t>& result);
-        uint_t arithmetic_sum(uint_t first, uint_t last, unsigned int terms);
         uint_t geometric_sum(uint_t first, uint_t ratio, unsigned int terms);
-        uint_t nth_term_arithmetic(uint_t first, uint_t diff, unsigned int n);
         uint_t nth_term_geometric(uint_t first, uint_t ratio, unsigned int n);
     }
 
