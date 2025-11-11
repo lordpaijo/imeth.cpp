@@ -773,54 +773,6 @@ pythagorean(6, 8);      // 10.0
 
 **Real-world:** Construction, navigation, diagonal measurements.
 
----
-
-## Conversions
-
-### Celsius to Fahrenheit
-
-```c++
-double celsiusToFahrenheit(double celsius);
-```
-
-Converts temperature from Celsius to Fahrenheit.
-
-**Formula:** F = (C × 9/5) + 32
-
-**Examples:**
-```c++
-celsiusToFahrenheit(0);     // 32.0 (freezing point)
-celsiusToFahrenheit(100);   // 212.0 (boiling point)
-celsiusToFahrenheit(25);    // 77.0 (room temperature)
-celsiusToFahrenheit(-40);   // -40.0 (same in both scales)
-```
-
-**Real-world:** Weather forecasts, cooking, scientific conversions.
-
----
-
-### Fahrenheit to Celsius
-
-```c++
-double fahrenheitToCelsius(double fahrenheit);
-```
-
-Converts temperature from Fahrenheit to Celsius.
-
-**Formula:** C = (F - 32) × 5/9
-
-**Examples:**
-```c++
-fahrenheitToCelsius(32);    // 0.0 (freezing point)
-fahrenheitToCelsius(212);   // 100.0 (boiling point)
-fahrenheitToCelsius(77);    // 25.0 (room temperature)
-fahrenheitToCelsius(98.6);  // 37.0 (body temperature)
-```
-
-**Real-world:** International temperature conversions, scientific calculations.
-
----
-
 ## Finance
 
 ### Simple Interest
@@ -987,28 +939,6 @@ int main() {
     double diagonal = imeth::Arithmetic::pythagorean(width, height);
 
     std::cout << "Rectangle diagonal: " << diagonal << "\n";
-
-    return 0;
-}
-```
-
----
-
-### Example 6: Temperature Converter
-
-```c++
-#include <imeth/operation/arithmetic.hpp>
-#include <iostream>
-
-int main() {
-    double celsius = 25.0;
-    double fahrenheit = imeth::Arithmetic::celsiusToFahrenheit(celsius);
-
-    std::cout << celsius << "°C = " << fahrenheit << "°F\n";
-
-    // Convert back
-    double backToCelsius = imeth::Arithmetic::fahrenheitToCelsius(fahrenheit);
-    std::cout << fahrenheit << "°F = " << backToCelsius << "°C\n";
 
     return 0;
 }
