@@ -658,4 +658,297 @@ auto err4 = imeth::Logarithm::log(1, 10);   // nullopt
 
 ## Tips
 
-- **Choose the right base**: Use ln for calculus, log₁
+- **Choose the right base**: Use ln for calculus, log₁₀ for science/engineering, log₂ for computer science
+- **Always validate input**: Check for negative numbers and zero before computation
+- **Use std::optional properly**: Always check `has_value()` before accessing the result
+- **Understand the domain**: Logarithms only work for positive numbers
+- **Performance consideration**: `ln` is typically fastest, other bases use conversion
+- **Precision**: Results are accurate to double precision (~15 decimal places)
+- **Avoid unnecessary conversions**: Use the specific function (ln, log10, log2) instead of converting from log()
+
+---
+
+## Common Pitfalls
+
+### 1. Forgetting to Check std::optional
+
+```c++
+// ❌ WRONG - May crash if result is nullopt
+auto result = imeth::Logarithm::log(2, -8);
+std::cout << result.value() << "\n";  // CRASH!
+
+// ✅ CORRECT
+auto result = imeth::Logarithm::log(2, -8);
+if (result.has_value()) {
+    std::cout << result.value() << "\n";
+} else {
+    std::cerr << "Invalid input\n";
+}
+```
+
+### 2. Using Wrong Base
+
+```c++
+// ❌ WRONG - Using natural log for pH calculation
+auto pH = -imeth::Logarithm::ln(0.001);  // Wrong! pH uses base 10
+
+// ✅ CORRECT
+auto log_h = imeth::Logarithm::log10(0.001);
+if (log_h.has_value()) {
+    double pH = -log_h.value();  // pH = 3.0
+}
+```
+
+### 3. Confusion Between log() and solve_exponential()
+
+```c++
+// Both compute the same thing but have different semantic meaning:
+
+// When you think: "log₂(8) = ?"
+auto result1 = imeth::Logarithm::log(2, 8);  // 3.0
+
+// When you think: "2^x = 8, solve for x"
+auto result2 = imeth::Logarithm::solve_exponential(2, 8);  // 3.0
+
+// Use the one that matches your mental model!
+```
+
+### 4. Base 1 Error
+
+```c++
+// ❌ WRONG - Base cannot be 1
+auto result = imeth::Logarithm::log(1, 100);  // nullopt!
+// log₁(x) is undefined because 1^n = 1 for all n
+
+// ✅ CORRECT - Use a valid base
+auto result = imeth::Logarithm::log(10, 100);  // 2.0
+```
+
+### 5. Negative or Zero Input
+
+```c++
+// ❌ WRONG - Logarithm undefined for non-positive numbers
+auto result1 = imeth::Logarithm::log10(0);    // nullopt
+auto result2 = imeth::Logarithm::ln(-5);      // nullopt
+
+// ✅ CORRECT - Ensure positive input
+double value = -5;
+if (value > 0) {
+    auto result = imeth::Logarithm::ln(value);
+}
+```
+
+---
+
+## Performance Characteristics
+
+### Time Complexity
+All logarithm operations: **O(1)** - constant time
+
+The functions use optimized math library implementations:
+- `ln()`: Direct call to `std::log()`
+- `log10()`: Direct call to `std::log10()`
+- `log2()`: Direct call to `std::log2()`
+- `log()`: Uses change of base formula: `ln(value) / ln(base)`
+- `solve_exponential()`: Alias for `log()`
+- `change_base()`: Uses formula: `log_old(value) / log_old(new_base)`
+
+### Space Complexity
+**O(1)** - constant space (only stores the result)
+
+### Relative Performance
+```
+Fastest:    ln()         ≈ 1.0x (baseline)
+Fast:       log10()      ≈ 1.1x
+Fast:       log2()       ≈ 1.1x
+Moderate:   log()        ≈ 1.5x (requires division)
+Moderate:   change_base()≈ 2.0x (requires two logarithms)
+```
+
+**Performance tip**: If you need many logarithms with the same base, consider converting once:
+```c++
+// Slow: Computing log₃ many times
+for (double val : values) {
+    auto result = imeth::Logarithm::log(3, val);
+    // Uses log(val) / log(3) each time
+}
+
+// Faster: Precompute the denominator
+auto log_3 = imeth::Logarithm::ln(3);
+if (log_3.has_value()) {
+    double ln_3 = log_3.value();
+    for (double val : values) {
+        auto ln_val = imeth::Logarithm::ln(val);
+        if (ln_val.has_value()) {
+            double result = ln_val.value() / ln_3;
+            // More efficient!
+        }
+    }
+}
+```
+
+---
+
+## Mathematical Background
+
+### What is a Logarithm?
+
+A logarithm answers the question: **"What exponent do I need?"**
+
+Given: **base^? = value**
+Answer: **? = log_base(value)**
+
+**Visual understanding:**
+```
+Exponential:  2¹ = 2,   2² = 4,   2³ = 8,   2⁴ = 16
+Logarithm:    log₂(2) = 1,  log₂(4) = 2,  log₂(8) = 3,  log₂(16) = 4
+```
+
+The logarithm is the **inverse operation** of exponentiation:
+- Exponentiation: base^x = value
+- Logarithm: x = log_base(value)
+
+### Why Are Logarithms Useful?
+
+1. **Turn multiplication into addition**
+  - log(a × b) = log(a) + log(b)
+  - Makes complex calculations simpler
+
+2. **Turn division into subtraction**
+  - log(a / b) = log(a) - log(b)
+
+3. **Turn exponentiation into multiplication**
+  - log(a^n) = n × log(a)
+
+4. **Handle very large numbers**
+  - log₁₀(1,000,000,000) = 9 (much easier to work with)
+
+5. **Solve exponential equations**
+  - If 2^x = 100, then x = log₂(100) ≈ 6.64
+
+### The Three Important Bases
+
+**Base e (Natural Logarithm - ln)**
+- **e ≈ 2.71828...**
+- Used in: calculus, continuous growth, physics
+- Special property: derivative of e^x is e^x
+- Most fundamental in mathematics
+
+**Base 10 (Common Logarithm - log₁₀)**
+- Matches our decimal number system
+- Used in: chemistry (pH), physics (decibels), seismology (Richter scale)
+- Easy to understand orders of magnitude
+
+**Base 2 (Binary Logarithm - log₂)**
+- Matches binary computer system
+- Used in: computer science, information theory, algorithm analysis
+- Answers: "How many bits?" or "How many times do I halve/double?"
+
+---
+
+## Relationship to Other Operations
+
+### Logarithm ↔ Exponentiation
+```c++
+// These are inverses of each other
+double x = 3.0;
+double base = 2.0;
+
+// Exponentiation: 2^3 = 8
+double value = imeth::Arithmethic::power(base, x);  // 8.0
+
+// Logarithm: log₂(8) = 3
+auto result = imeth::Logarithm::log(base, value);  // 3.0
+```
+
+### Logarithm ↔ Root
+```c++
+// √x is the same as x^(1/2)
+// Which means: log(√x) = log(x^(1/2)) = (1/2) × log(x)
+
+double x = 16.0;
+
+// Square root
+double sqrt_x = std::sqrt(x);  // 4.0
+
+// Using logarithm
+auto log_x = imeth::Logarithm::log2(x);      // 4.0
+if (log_x.has_value()) {
+    double half_log = log_x.value() / 2.0;   // 2.0
+    // 2^2 = 4, which is √16
+}
+```
+
+---
+
+## Integration with Other Modules
+
+### With Exponential Operations
+```c++
+#include <imeth/operation/logarithm.hpp>
+#include <cmath>
+
+// Compound interest: A = P × e^(rt)
+// To find time t when A is known: t = ln(A/P) / r
+
+double principal = 1000.0;
+double amount = 2000.0;
+double rate = 0.05;
+
+double ratio = amount / principal;
+auto ln_ratio = imeth::Logarithm::ln(ratio);
+
+if (ln_ratio.has_value()) {
+    double time = ln_ratio.value() / rate;
+    std::cout << "Time to double: " << time << " years\n";
+}
+```
+
+### With Trigonometry (Advanced)
+```c++
+// Logarithms can solve exponential trigonometric equations
+// Example: e^x = 1 + sin(x), solve numerically using logarithms
+```
+
+### With Statistics
+```c++
+// Log-normal distribution
+// Log transformation for skewed data
+auto log_data = imeth::Logarithm::ln(data_point);
+```
+
+---
+
+## Frequently Asked Questions
+
+**Q: Why does my calculator show "Math Error" for log(-5)?**
+A: Logarithms are only defined for positive numbers. This library returns `std::nullopt` for invalid inputs instead of crashing.
+
+**Q: What's the difference between ln, log, and log₁₀?**
+A:
+- `ln` = natural logarithm (base e ≈ 2.718)
+- `log10` = common logarithm (base 10)
+- `log` = general logarithm (any base you specify)
+
+**Q: Why do I need logarithms if I have exponentiation?**
+A: Logarithms solve the inverse problem. If you know 2^x = 100 and need to find x, you use logarithms: x = log₂(100).
+
+**Q: Can I compute logarithm of zero?**
+A: No, log(0) approaches negative infinity but is undefined. The function returns `std::nullopt`.
+
+**Q: Why is log₁(anything) undefined?**
+A: Because 1^x = 1 for all x. There's no unique answer to "1 to what power equals 5?"
+
+**Q: How accurate are these functions?**
+A: Accurate to double precision (~15-17 significant decimal digits).
+
+**Q: Which is faster: ln(), log10(), or log()?**
+A: `ln()` and `log10()` are slightly faster because they're direct library calls. `log()` requires an additional division.
+
+**Q: Can I use this for complex numbers?**
+A: No, this library only supports real numbers (double). Complex logarithms require a different implementation.
+
+**Q: What's the relationship between log₂ and bits?**
+A: log₂(n) tells you how many bits are needed to represent n different values (rounded up).
+
+---
