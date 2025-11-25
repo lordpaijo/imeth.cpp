@@ -17,32 +17,32 @@ Octal uses digits 0-7. It's a convenient way to represent binary numbers because
 ### FROM Decimal TO Octal
 
 ```c++
-static std::string fromDecimal(int decimal);
+static std::string from_decimal(int decimal);
 ```
 
 **Examples:**
 ```c++
-Octal::fromDecimal(8);       // "10"
-Octal::fromDecimal(64);      // "100"
-Octal::fromDecimal(42);      // "52"
-Octal::fromDecimal(255);     // "377"
-Octal::fromDecimal(0);       // "0"
-Octal::fromDecimal(-10);     // "-12"
+Octal::from_decimal(8);       // "10"
+Octal::from_decimal(64);      // "100"
+Octal::from_decimal(42);      // "52"
+Octal::from_decimal(255);     // "377"
+Octal::from_decimal(0);       // "0"
+Octal::from_decimal(-10);     // "-12"
 ```
 
 ### FROM Octal TO Decimal
 
 ```c++
-static int toDecimal(const std::string& octal);
+static int to_decimal(const std::string& octal);
 ```
 
 **Examples:**
 ```c++
-Octal::toDecimal("10");      // 8
-Octal::toDecimal("100");     // 64
-Octal::toDecimal("52");      // 42
-Octal::toDecimal("377");     // 255
-Octal::toDecimal("-12");     // -10
+Octal::to_decimal("10");      // 8
+Octal::to_decimal("100");     // 64
+Octal::to_decimal("52");      // 42
+Octal::to_decimal("377");     // 255
+Octal::to_decimal("-12");     // -10
 ```
 
 ## Arithmetic Operations
@@ -68,32 +68,32 @@ Octal::add("77", "1");           // "100" (63 + 1 = 64 in decimal)
 ### Validation
 
 ```c++
-static bool isValid(const std::string& octal);
+static bool is_valid(const std::string& octal);
 ```
 
 Check if a string contains only valid octal digits (0-7).
 
 **Examples:**
 ```c++
-Octal::isValid("1234567");   // true
-Octal::isValid("123");       // true
-Octal::isValid("789");       // false (8 and 9 are not octal digits)
-Octal::isValid("abc");       // false
+Octal::is_valid("1234567");   // true
+Octal::is_valid("123");       // true
+Octal::is_valid("789");       // false (8 and 9 are not octal digits)
+Octal::is_valid("abc");       // false
 ```
 
 ### Padding
 
 ```c++
-static std::string padLeft(const std::string& octal, size_t length);
+static std::string pad_left(const std::string& octal, size_t length);
 ```
 
 Add zeros to the left to reach a specific length.
 
 **Examples:**
 ```c++
-Octal::padLeft("12", 4);     // "0012"
-Octal::padLeft("777", 4);    // "0777"
-Octal::padLeft("1234", 3);   // "1234" (already longer)
+Octal::pad_left("12", 4);     // "0012"
+Octal::pad_left("777", 4);    // "0777"
+Octal::pad_left("1234", 3);   // "1234" (already longer)
 ```
 
 ## Real-World Examples
@@ -109,7 +109,7 @@ File permissions in Unix/Linux are often shown in octal!
 // r-x = 101 (binary) = 5 (octal) - others can read and execute
 
 std::string permissions = "755";
-int decimal = Octal::toDecimal(permissions);  // 493
+int decimal = Octal::to_decimal(permissions);  // 493
 std::cout << "Decimal value: " << decimal << "\n";
 ```
 
@@ -128,8 +128,8 @@ Octal:    7   5   2
 // Each group: 7, 5, 2
 // Result: 752 in octal
 
-int decimal = Binary::toDecimal("111101010");  // 490
-std::string octal = Octal::fromDecimal(decimal);  // "752"
+int decimal = Binary::to_decimal("111101010");  // 490
+std::string octal = Octal::from_decimal(decimal);  // "752"
 ```
 
 ### Counting in Octal
@@ -137,7 +137,7 @@ std::string octal = Octal::fromDecimal(decimal);  // "752"
 ```c++
 // Octal counting: 0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, ..., 17, 20
 for (int i = 0; i <= 20; ++i) {
-    std::cout << i << " = " << Octal::fromDecimal(i) << " (octal)\n";
+    std::cout << i << " = " << Octal::from_decimal(i) << " (octal)\n";
 }
 // Output:
 // 0 = 0 (octal)

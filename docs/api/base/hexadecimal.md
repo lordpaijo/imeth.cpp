@@ -17,35 +17,35 @@ Hexadecimal (hex) uses 16 digits: 0-9 and A-F (where A=10, B=11, C=12, D=13, E=1
 ### FROM Decimal TO Hexadecimal
 
 ```c++
-static std::string fromDecimal(int decimal);
+static std::string from_decimal(int decimal);
 ```
 
 **Examples:**
 ```c++
-Hexadecimal::fromDecimal(10);      // "A"
-Hexadecimal::fromDecimal(15);      // "F"
-Hexadecimal::fromDecimal(16);      // "10"
-Hexadecimal::fromDecimal(255);     // "FF"
-Hexadecimal::fromDecimal(42);      // "2A"
-Hexadecimal::fromDecimal(4096);    // "1000"
-Hexadecimal::fromDecimal(-10);     // "-A"
+Hexadecimal::from_decimal(10);      // "A"
+Hexadecimal::from_decimal(15);      // "F"
+Hexadecimal::from_decimal(16);      // "10"
+Hexadecimal::from_decimal(255);     // "FF"
+Hexadecimal::from_decimal(42);      // "2A"
+Hexadecimal::from_decimal(4096);    // "1000"
+Hexadecimal::from_decimal(-10);     // "-A"
 ```
 
 ### FROM Hexadecimal TO Decimal
 
 ```c++
-static int toDecimal(const std::string& hex);
+static int to_decimal(const std::string& hex);
 ```
 
 **Examples:**
 ```c++
-Hexadecimal::toDecimal("A");       // 10
-Hexadecimal::toDecimal("F");       // 15
-Hexadecimal::toDecimal("10");      // 16
-Hexadecimal::toDecimal("FF");      // 255
-Hexadecimal::toDecimal("2A");      // 42
-Hexadecimal::toDecimal("1000");    // 4096
-Hexadecimal::toDecimal("ff");      // 255 (case insensitive)
+Hexadecimal::to_decimal("A");       // 10
+Hexadecimal::to_decimal("F");       // 15
+Hexadecimal::to_decimal("10");      // 16
+Hexadecimal::to_decimal("FF");      // 255
+Hexadecimal::to_decimal("2A");      // 42
+Hexadecimal::to_decimal("1000");    // 4096
+Hexadecimal::to_decimal("ff");      // 255 (case insensitive)
 ```
 
 ## Arithmetic Operations
@@ -71,50 +71,50 @@ Hexadecimal::multiply("10", "10");   // "100" (16 × 16 = 256)
 ### Validation
 
 ```c++
-static bool isValid(const std::string& hex);
+static bool is_valid(const std::string& hex);
 ```
 
 Check if a string contains only valid hexadecimal digits (0-9, A-F).
 
 **Examples:**
 ```c++
-Hexadecimal::isValid("1234");      // true
-Hexadecimal::isValid("ABCDEF");    // true
-Hexadecimal::isValid("FF00");      // true
-Hexadecimal::isValid("GHI");       // false (G, H, I are not hex digits)
-Hexadecimal::isValid("ff");        // true (case insensitive)
+Hexadecimal::is_valid("1234");      // true
+Hexadecimal::is_valid("ABCDEF");    // true
+Hexadecimal::is_valid("FF00");      // true
+Hexadecimal::is_valid("GHI");       // false (G, H, I are not hex digits)
+Hexadecimal::is_valid("ff");        // true (case insensitive)
 ```
 
 ### Case Conversion
 
 ```c++
-static std::string toUpperCase(const std::string& hex);
-static std::string toLowerCase(const std::string& hex);
+static std::string to_upper_case(const std::string& hex);
+static std::string to_lower_case(const std::string& hex);
 ```
 
 Convert hex strings between upper and lowercase.
 
 **Examples:**
 ```c++
-Hexadecimal::toUpperCase("2a");    // "2A"
-Hexadecimal::toUpperCase("ff");    // "FF"
-Hexadecimal::toLowerCase("2A");    // "2a"
-Hexadecimal::toLowerCase("FF");    // "ff"
+Hexadecimal::to_upper_case("2a");    // "2A"
+Hexadecimal::to_upper_case("ff");    // "FF"
+Hexadecimal::to_lower_case("2A");    // "2a"
+Hexadecimal::to_lower_case("FF");    // "ff"
 ```
 
 ### Padding
 
 ```c++
-static std::string padLeft(const std::string& hex, size_t length);
+static std::string pad_left(const std::string& hex, size_t length);
 ```
 
 Add zeros to the left to reach a specific length.
 
 **Examples:**
 ```c++
-Hexadecimal::padLeft("FF", 4);     // "00FF"
-Hexadecimal::padLeft("A", 2);      // "0A"
-Hexadecimal::padLeft("1234", 3);   // "1234" (already longer)
+Hexadecimal::pad_left("FF", 4);     // "00FF"
+Hexadecimal::pad_left("A", 2);      // "0A"
+Hexadecimal::pad_left("1234", 3);   // "1234" (already longer)
 ```
 
 ## Real-World Examples
@@ -125,9 +125,9 @@ Colors on screens are often represented in hex!
 
 ```c++
 // RGB color: Red=255, Green=128, Blue=64
-std::string red = Hexadecimal::fromDecimal(255);    // "FF"
-std::string green = Hexadecimal::fromDecimal(128);  // "80"
-std::string blue = Hexadecimal::fromDecimal(64);    // "40"
+std::string red = Hexadecimal::from_decimal(255);    // "FF"
+std::string green = Hexadecimal::from_decimal(128);  // "80"
+std::string blue = Hexadecimal::from_decimal(64);    // "40"
 
 std::string color = red + green + blue;  // "FF8040"
 std::cout << "Color code: #" << color << "\n";  // #FF8040
@@ -139,9 +139,9 @@ std::cout << "Color code: #" << color << "\n";  // #FF8040
 // Parse color #A1B2C3
 std::string hexColor = "A1B2C3";
 
-int red = Hexadecimal::toDecimal(hexColor.substr(0, 2));    // 161
-int green = Hexadecimal::toDecimal(hexColor.substr(2, 2));  // 178
-int blue = Hexadecimal::toDecimal(hexColor.substr(4, 2));   // 195
+int red = Hexadecimal::to_decimal(hexColor.substr(0, 2));    // 161
+int green = Hexadecimal::to_decimal(hexColor.substr(2, 2));  // 178
+int blue = Hexadecimal::to_decimal(hexColor.substr(4, 2));   // 195
 
 std::cout << "RGB(" << red << ", " << green << ", " << blue << ")\n";
 ```
@@ -153,7 +153,7 @@ Computer memory addresses are shown in hex:
 ```c++
 // A typical memory address
 std::string address = "7FFF5C";
-int decimal = Hexadecimal::toDecimal(address);  // 8388444
+int decimal = Hexadecimal::to_decimal(address);  // 8388444
 std::cout << "Memory location: 0x" << address << "\n";
 ```
 
@@ -172,21 +172,21 @@ Hex:       F    A    5
 // Each group: F, A, 5
 // Result: FA5 in hex
 
-int decimal = Binary::toDecimal("111110100101");  // 4005
-std::string hex = Hexadecimal::fromDecimal(decimal);  // "FA5"
+int decimal = Binary::to_decimal("111110100101");  // 4005
+std::string hex = Hexadecimal::from_decimal(decimal);  // "FA5"
 ```
 
 ### Common Hex Values
 
 ```c++
 // Powers of 16
-Hexadecimal::fromDecimal(16);      // "10"
-Hexadecimal::fromDecimal(256);     // "100"
-Hexadecimal::fromDecimal(4096);    // "1000"
+Hexadecimal::from_decimal(16);      // "10"
+Hexadecimal::from_decimal(256);     // "100"
+Hexadecimal::from_decimal(4096);    // "1000"
 
 // Max values
-Hexadecimal::fromDecimal(255);     // "FF" (max 8-bit value)
-Hexadecimal::fromDecimal(65535);   // "FFFF" (max 16-bit value)
+Hexadecimal::from_decimal(255);     // "FF" (max 8-bit value)
+Hexadecimal::from_decimal(65535);   // "FFFF" (max 16-bit value)
 ```
 
 ## Understanding Hexadecimal
@@ -214,7 +214,7 @@ Example: `2A` in hex = (2×16) + (10×1) = 32 + 10 = 42 in decimal
 ```c++
 // Count from 0 to 20 in hex
 for (int i = 0; i <= 20; ++i) {
-    std::cout << i << " = " << Hexadecimal::fromDecimal(i) << " (hex)\n";
+    std::cout << i << " = " << Hexadecimal::from_decimal(i) << " (hex)\n";
 }
 // Output includes:
 // 10 = A (hex)
@@ -253,8 +253,8 @@ Hexadecimal::add("2A", "1F");  // "49"
 
 ```c++
 // All F's are special
-Hexadecimal::toDecimal("F");       // 15 (max 4 bits)
-Hexadecimal::toDecimal("FF");      // 255 (max 8 bits / 1 byte)
-Hexadecimal::toDecimal("FFF");     // 4095 (max 12 bits)
-Hexadecimal::toDecimal("FFFF");    // 65535 (max 16 bits / 2 bytes)
+Hexadecimal::to_decimal("F");       // 15 (max 4 bits)
+Hexadecimal::to_decimal("FF");      // 255 (max 8 bits / 1 byte)
+Hexadecimal::to_decimal("FFF");     // 4095 (max 12 bits)
+Hexadecimal::to_decimal("FFFF");    // 65535 (max 16 bits / 2 bytes)
 ```

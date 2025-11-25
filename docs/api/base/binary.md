@@ -17,30 +17,30 @@ Binary is the foundation of computer systems. Every number in a computer is stor
 ### FROM Decimal TO Binary
 
 ```c++
-static std::string fromDecimal(int decimal);
+static std::string from_decimal(int decimal);
 ```
 
 **Examples:**
 ```c++
-Binary::fromDecimal(10);     // "1010"
-Binary::fromDecimal(42);     // "101010"
-Binary::fromDecimal(255);    // "11111111"
-Binary::fromDecimal(0);      // "0"
-Binary::fromDecimal(-5);     // "-101"
+Binary::from_decimal(10);     // "1010"
+Binary::from_decimal(42);     // "101010"
+Binary::from_decimal(255);    // "11111111"
+Binary::from_decimal(0);      // "0"
+Binary::from_decimal(-5);     // "-101"
 ```
 
 ### FROM Binary TO Decimal
 
 ```c++
-static int toDecimal(const std::string& binary);
+static int to_decimal(const std::string& binary);
 ```
 
 **Examples:**
 ```c++
-Binary::toDecimal("1010");      // 10
-Binary::toDecimal("101010");    // 42
-Binary::toDecimal("11111111");  // 255
-Binary::toDecimal("-101");      // -5
+Binary::to_decimal("1010");      // 10
+Binary::to_decimal("101010");    // 42
+Binary::to_decimal("11111111");  // 255
+Binary::to_decimal("-101");      // -5
 ```
 
 ## Arithmetic Operations
@@ -66,14 +66,14 @@ These operations work at the bit level and are fundamental to computer programmi
 
 ### AND Operation
 ```c++
-static std::string bitwiseAND(const std::string& a, const std::string& b);
+static std::string bitwise_AND(const std::string& a, const std::string& b);
 ```
 
 Returns 1 only when both bits are 1.
 
 **Examples:**
 ```c++
-Binary::bitwiseAND("1100", "1010");  // "1000"
+Binary::bitwise_AND("1100", "1010");  // "1000"
 //  1100
 // &1010
 // -----
@@ -82,14 +82,14 @@ Binary::bitwiseAND("1100", "1010");  // "1000"
 
 ### OR Operation
 ```c++
-static std::string bitwiseOR(const std::string& a, const std::string& b);
+static std::string bitwise_OR(const std::string& a, const std::string& b);
 ```
 
 Returns 1 when at least one bit is 1.
 
 **Examples:**
 ```c++
-Binary::bitwiseOR("1100", "1010");   // "1110"
+Binary::bitwise_OR("1100", "1010");   // "1110"
 //  1100
 // |1010
 // -----
@@ -98,14 +98,14 @@ Binary::bitwiseOR("1100", "1010");   // "1110"
 
 ### XOR Operation
 ```c++
-static std::string bitwiseXOR(const std::string& a, const std::string& b);
+static std::string bitwise_XOR(const std::string& a, const std::string& b);
 ```
 
 Returns 1 only when bits are different.
 
 **Examples:**
 ```c++
-Binary::bitwiseXOR("1100", "1010");  // "110"
+Binary::bitwise_XOR("1100", "1010");  // "110"
 //  1100
 // ^1010
 // -----
@@ -114,30 +114,30 @@ Binary::bitwiseXOR("1100", "1010");  // "110"
 
 ### NOT Operation
 ```c++
-static std::string bitwiseNOT(const std::string& binary);
+static std::string bitwise_NOT(const std::string& binary);
 ```
 
 Flips all bits (0→1, 1→0).
 
 **Examples:**
 ```c++
-Binary::bitwiseNOT("1010");  // "0101"
-Binary::bitwiseNOT("1111");  // "0000"
+Binary::bitwise_NOT("1010");  // "0101"
+Binary::bitwise_NOT("1111");  // "0000"
 ```
 
 ### Bit Shifting
 
 ```c++
-static std::string leftShift(const std::string& binary, int positions);
-static std::string rightShift(const std::string& binary, int positions);
+static std::string left_shift(const std::string& binary, int positions);
+static std::string right_shift(const std::string& binary, int positions);
 ```
 
 Shift bits left or right. Left shift multiplies by 2, right shift divides by 2.
 
 **Examples:**
 ```c++
-Binary::leftShift("101", 2);   // "10100" (5 << 2 = 20)
-Binary::rightShift("1100", 2); // "11" (12 >> 2 = 3)
+Binary::left_shift("101", 2);   // "10100" (5 << 2 = 20)
+Binary::right_shift("1100", 2); // "11" (12 >> 2 = 3)
 ```
 
 ## Utility Functions
@@ -145,48 +145,48 @@ Binary::rightShift("1100", 2); // "11" (12 >> 2 = 3)
 ### Validation
 
 ```c++
-static bool isValid(const std::string& binary);
+static bool is_valid(const std::string& binary);
 ```
 
 Check if a string contains only valid binary digits (0 and 1).
 
 **Examples:**
 ```c++
-Binary::isValid("1010");   // true
-Binary::isValid("1012");   // false (contains '2')
-Binary::isValid("abc");    // false
+Binary::is_valid("1010");   // true
+Binary::is_valid("1012");   // false (contains '2')
+Binary::is_valid("abc");    // false
 ```
 
 ### Padding
 
 ```c++
-static std::string padLeft(const std::string& binary, size_t length);
+static std::string pad_left(const std::string& binary, size_t length);
 ```
 
 Add zeros to the left to reach a specific length.
 
 **Examples:**
 ```c++
-Binary::padLeft("101", 8);     // "00000101"
-Binary::padLeft("1111", 8);    // "00001111"
-Binary::padLeft("10101010", 4);// "10101010" (already longer)
+Binary::pad_left("101", 8);     // "00000101"
+Binary::pad_left("1111", 8);    // "00001111"
+Binary::pad_left("10101010", 4);// "10101010" (already longer)
 ```
 
 ### Counting Bits
 
 ```c++
-static int countOnes(const std::string& binary);
-static int countZeros(const std::string& binary);
+static int count_ones(const std::string& binary);
+static int count_zeros(const std::string& binary);
 ```
 
 Count the number of 1s or 0s in a binary number.
 
 **Examples:**
 ```c++
-Binary::countOnes("1010");    // 2
-Binary::countZeros("1010");   // 2
-Binary::countOnes("1111");    // 4
-Binary::countZeros("0000");   // 4
+Binary::count_ones("1010");    // 2
+Binary::count_zeros("1010");   // 2
+Binary::count_ones("1111");    // 4
+Binary::count_zeros("0000");   // 4
 ```
 
 ## Real-World Examples
@@ -194,13 +194,13 @@ Binary::countZeros("0000");   // 4
 ### Converting Your Age to Binary
 ```c++
 int age = 15;
-std::string binaryAge = Binary::fromDecimal(age);  // "1111"
+std::string binaryAge = Binary::from_decimal(age);  // "1111"
 std::cout << "I'm " << binaryAge << " years old in binary!\n";
 ```
 
 ### Checking if a Number is Even
 ```c++
-std::string num = Binary::fromDecimal(42);  // "101010"
+std::string num = Binary::from_decimal(42);  // "101010"
 // If last bit is 0, the number is even
 bool isEven = (num.back() == '0');  // true
 ```
@@ -209,18 +209,18 @@ bool isEven = (num.back() == '0');  // true
 ```c++
 std::string message = "1010";
 std::string key = "1100";
-std::string encrypted = Binary::bitwiseXOR(message, key);  // "0110"
-std::string decrypted = Binary::bitwiseXOR(encrypted, key);// "1010" (back to original!)
+std::string encrypted = Binary::bitwise_XOR(message, key);  // "0110"
+std::string decrypted = Binary::bitwise_XOR(encrypted, key);// "1010" (back to original!)
 ```
 
 ### Creating Bit Masks
 ```c++
 // Create a mask with 4 ones
-std::string mask = Binary::fromDecimal(15);  // "1111"
+std::string mask = Binary::from_decimal(15);  // "1111"
 
 // Use AND to extract bits
 std::string data = "10110101";
-std::string result = Binary::bitwiseAND(data, Binary::padLeft(mask, 8));
+std::string result = Binary::bitwise_AND(data, Binary::padLeft(mask, 8));
 // Gets the last 4 bits: "0101"
 ```
 
