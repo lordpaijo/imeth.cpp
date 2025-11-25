@@ -518,7 +518,7 @@ namespace imeth::Combinatorics {
             }
 
             double standard_deviation(const std::vector<double>& values, const std::vector<double>& probabilities) {
-                return Arithmetic::squareRoot(variance(values, probabilities));
+                return Arithmetic::square_root(variance(values, probabilities));
             }
         }
     }

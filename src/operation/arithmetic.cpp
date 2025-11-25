@@ -33,7 +33,7 @@ double power(double base, int exponent) {
     return result;
 }
 
-double squareRoot(double n) {
+double square_root(double n) {
     if (n < 0) {
         throw std::invalid_argument("Cannot take square root of negative number");
     }
@@ -42,7 +42,7 @@ double squareRoot(double n) {
     return z;
 }
 
-double cubeRoot(double n) {
+double cube_root(double n) {
     if (n == 0) return 0;
     bool negative = n < 0;
     if (negative) n = -n;
@@ -83,31 +83,31 @@ int remainder(int a, int b) {
     return a % b;
 }
 
-bool isDivisible(int a, int b) {
+bool is_divisible(int a, int b) {
     if (b == 0) return false;
     return (a % b) == 0;
 }
 
 // Percentages
-double percentOf(double percent, double total) {
+double percent_of(double percent, double total) {
     return (percent / 100.0) * total;
 }
 
-double whatPercent(double part, double total) {
+double what_percent(double part, double total) {
     if (total == 0) {
         throw std::invalid_argument("Total cannot be zero");
     }
     return (part / total) * 100.0;
 }
 
-double percentIncrease(double original, double newValue) {
+double percent_increase(double original, double newValue) {
     if (original == 0) {
         throw std::invalid_argument("Original value cannot be zero");
     }
     return ((newValue - original) / original) * 100.0;
 }
 
-double percentDecrease(double original, double newValue) {
+double percent_decrease(double original, double newValue) {
     if (original == 0) {
         throw std::invalid_argument("Original value cannot be zero");
     }
@@ -166,7 +166,7 @@ double median(std::vector<double> numbers) {
 }
 
 // Fractions
-double addFractions(const double num1, const double den1, const double num2, const double den2) {
+double add_fractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero");
     }
@@ -177,7 +177,7 @@ double addFractions(const double num1, const double den1, const double num2, con
     return (newNum1 + newNum2) / commonDen;
 }
 
-double subtractFractions(const double num1, const double den1, const double num2, const double den2) {
+double subtract_fractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero");
     }
@@ -187,14 +187,14 @@ double subtractFractions(const double num1, const double den1, const double num2
     return (newNum1 - newNum2) / commonDen;
 }
 
-double multiplyFractions(const double num1, const double den1, const double num2, const double den2) {
+double multiply_fractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero");
     }
     return (num1 * num2) / (den1 * den2);
 }
 
-double divideFractions(const double num1, const double den1, const double num2, const double den2) {
+double divide_fractions(const double num1, const double den1, const double num2, const double den2) {
     if (den1 == 0 || den2 == 0 || num2 == 0) {
         throw std::invalid_argument("Denominator cannot be zero and cannot divide by zero");
     }
@@ -202,7 +202,7 @@ double divideFractions(const double num1, const double den1, const double num2, 
 }
 
 // Rounding
-double roundToNearest(const double n) {
+double round_to_nearest(const double n) {
     if (n >= 0) {
         return static_cast<double>(static_cast<long long>(n + 0.5));
     } else {
@@ -211,7 +211,7 @@ double roundToNearest(const double n) {
     // this can give incorrect results... Do I have to wrap lround() from cmath here?????
 }
 
-double roundUp(const double n) {
+double round_up(const double n) {
     const auto intPart = static_cast<long long>(n);
     if (n > 0 && n > static_cast<double>(intPart)) {
         return static_cast<double>(intPart + 1);
@@ -219,7 +219,7 @@ double roundUp(const double n) {
     return static_cast<double>(intPart);
 }
 
-double roundDown(const double n) {
+double round_down(const double n) {
     const auto intPart = static_cast<long long>(n);
     if (n < 0 && n < static_cast<double>(intPart)) {
         return static_cast<double>(intPart - 1);
@@ -227,13 +227,13 @@ double roundDown(const double n) {
     return static_cast<double>(intPart);
 }
 
-double roundToDecimalPlaces(const double n, const int places) {
+double round_to_decimalPlaces(const double n, const int places) {
     const double multiplier = power(10.0, places);
-    return roundToNearest(n * multiplier) / multiplier;
+    return round_to_nearest(n * multiplier) / multiplier;
 }
 
 // Number Properties
-bool isEven(const int n) {
+bool is_even(const int n) {
     return n % 2 == 0;
 }
 
@@ -241,7 +241,7 @@ bool isOdd(const int n) {
     return n % 2 != 0;
 }
 
-bool isPrime(const int n) {
+bool is_prime(const int n) {
     if (n <= 1) return false;
     if (n == 2) return true;
     if (n % 2 == 0) return false;
@@ -253,7 +253,7 @@ bool isPrime(const int n) {
     return true;
 }
 
-int greatestCommonDivisor(int a, int b) {
+int greatest_common_divisor(int a, int b) {
     a = absolute(a);
     b = absolute(b);
 
@@ -265,24 +265,24 @@ int greatestCommonDivisor(int a, int b) {
     return a;
 }
 
-int leastCommonMultiple(const int a, const int b) {
+int least_common_multiple(const int a, const int b) {
     if (a == 0 || b == 0) return 0;
-    return absolute(a * b) / greatestCommonDivisor(a, b);
+    return absolute(a * b) / greatest_common_divisor(a, b);
 }
 
 // Distance and Pythagorean
-double distance2D(const double x1, const double y1, const double x2, const double y2) {
+double distance_2D(const double x1, const double y1, const double x2, const double y2) {
     const double dx = x2 - x1;
     const double dy = y2 - y1;
-    return squareRoot(dx * dx + dy * dy);
+    return square_root(dx * dx + dy * dy);
 }
 
 double pythagorean(const double a, const double b) {
-    return squareRoot(a * a + b * b);
+    return square_root(a * a + b * b);
 }
 
 // Simple Interest
-double simpleInterest(const double principal, const double rate, const double time) {
+double simple_interest(const double principal, const double rate, const double time) {
     return principal * (rate / 100.0) * time;
 }
 

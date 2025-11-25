@@ -66,7 +66,7 @@ QuadraticEquation::Solution QuadraticEquation::solve(double a, double b, double 
   }
 
   // Two distinct solutions
-  double sqrt_discriminant = imeth::Arithmetic::squareRoot(discriminant);
+  double sqrt_discriminant = imeth::Arithmetic::square_root(discriminant);
   double x1 = (-b - sqrt_discriminant) / (2 * a);
   double x2 = (-b + sqrt_discriminant) / (2 * a);
 

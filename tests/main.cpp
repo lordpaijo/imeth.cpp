@@ -47,11 +47,11 @@ int main() {
     std::cout << "10 + 5 = " << imeth::Arithmetic::add(10, 5) << "\n";
     std::cout << "10 * 5 = " << imeth::Arithmetic::multiply(10, 5) << "\n";
     std::cout << "2^5 = " << imeth::Arithmetic::power(2, 5) << "\n";
-    std::cout << "Square root of 144 = " << imeth::Arithmetic::squareRoot(144) << "\n\n";
+    std::cout << "Square root of 144 = " << imeth::Arithmetic::square_root(144) << "\n\n";
 
     // Percentages
-    std::cout << "25% of 80 = " << imeth::Arithmetic::percentOf(25, 80) << "\n";
-    std::cout << "20 is what % of 50? = " << imeth::Arithmetic::whatPercent(20, 50) << "%\n\n";
+    std::cout << "25% of 80 = " << imeth::Arithmetic::percent_of(25, 80) << "\n";
+    std::cout << "20 is what % of 50? = " << imeth::Arithmetic::what_percent(20, 50) << "%\n\n";
 
     // Statistics
     const std::vector<double> grades = {85, 90, 78, 92, 88};
@@ -62,9 +62,9 @@ int main() {
     std::cout << "Lowest: " << imeth::Arithmetic::minimum(grades) << "\n\n";
 
     // Number properties
-    std::cout << "Is 17 prime? " << (imeth::Arithmetic::isPrime(17) ? "Yes" : "No") << "\n";
-    std::cout << "Is 20 even? " << (imeth::Arithmetic::isEven(20) ? "Yes" : "No") << "\n";
-    std::cout << "GCD of 48 and 18 = " << imeth::Arithmetic::greatestCommonDivisor(48, 18) << "\n\n";
+    std::cout << "Is 17 prime? " << (imeth::Arithmetic::is_prime(17) ? "Yes" : "No") << "\n";
+    std::cout << "Is 20 even? " << (imeth::Arithmetic::is_even(20) ? "Yes" : "No") << "\n";
+    std::cout << "GCD of 48 and 18 = " << imeth::Arithmetic::greatest_common_divisor(48, 18) << "\n\n";
 
     // Quadratic equation
     if (auto result = imeth::QuadraticEquation::solve(1, -5, 6); std::holds_alternative<std::pair<double, double>>(result)) {

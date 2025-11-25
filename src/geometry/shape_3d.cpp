@@ -40,7 +40,7 @@ Cone::Cone(const double radius, const double height)
     : radius_(radius), height_(height) {}
 
 double Cone::area() const {
-    double slant_height = imeth::Arithmetic::squareRoot(radius_ * radius_ + height_ * height_);
+    double slant_height = imeth::Arithmetic::square_root(radius_ * radius_ + height_ * height_);
     return std::numbers::pi * radius_ * (radius_ + slant_height);
 }
 
