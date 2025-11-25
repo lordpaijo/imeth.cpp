@@ -121,17 +121,17 @@ power(2, -2);       // 0.25 (2⁻² = 1/4)
 ### Square Root
 
 ```c++
-double squareRoot(double n);
+double square_root(double n);
 ```
 
 Computes the square root (√n).
 
 **Examples:**
 ```c++
-squareRoot(9);      // 3.0
-squareRoot(25);     // 5.0
-squareRoot(2);      // 1.414...
-squareRoot(100);    // 10.0
+square_root(9);      // 3.0
+square_root(25);     // 5.0
+square_root(2);      // 1.414...
+square_root(100);    // 10.0
 ```
 
 **Real-world:** Pythagorean theorem, standard deviation, geometric calculations.
@@ -141,17 +141,17 @@ squareRoot(100);    // 10.0
 ### Cube Root
 
 ```c++
-double cubeRoot(double n);
+double cube_root(double n);
 ```
 
 Computes the cube root (∛n).
 
 **Examples:**
 ```c++
-cubeRoot(8);        // 2.0
-cubeRoot(27);       // 3.0
-cubeRoot(-8);       // -2.0 (cube root of negative is negative)
-cubeRoot(1000);     // 10.0
+cube_root(8);        // 2.0
+cube_root(27);       // 3.0
+cube_root(-8);       // -2.0 (cube root of negative is negative)
+cube_root(1000);     // 10.0
 ```
 
 **Real-world:** Volume calculations, finding side length from volume.
@@ -228,17 +228,17 @@ remainder(7, 10);   // 7 (dividend smaller than divisor)
 ### Is Divisible
 
 ```c++
-bool isDivisible(int a, int b);
+bool is_divisible(int a, int b);
 ```
 
 Checks if a is evenly divisible by b (remainder is 0).
 
 **Examples:**
 ```c++
-isDivisible(10, 2);     // true
-isDivisible(15, 3);     // true
-isDivisible(17, 5);     // false
-isDivisible(100, 25);   // true
+is_divisible(10, 2);     // true
+is_divisible(15, 3);     // true
+is_divisible(17, 5);     // false
+is_divisible(100, 25);   // true
 ```
 
 **Real-world:** Checking if items can be evenly distributed, validating constraints.
@@ -250,7 +250,7 @@ isDivisible(100, 25);   // true
 ### Percent Of
 
 ```c++
-double percentOf(double percent, double total);
+double percent_of(double percent, double total);
 ```
 
 Calculates what percent% of total equals.
@@ -259,10 +259,10 @@ Calculates what percent% of total equals.
 
 **Examples:**
 ```c++
-percentOf(20, 100);     // 20.0 (20% of 100)
-percentOf(15, 200);     // 30.0 (15% of 200)
-percentOf(50, 80);      // 40.0 (50% of 80)
-percentOf(8.5, 150);    // 12.75 (8.5% of 150)
+percent_of(20, 100);     // 20.0 (20% of 100)
+percent_of(15, 200);     // 30.0 (15% of 200)
+percent_of(50, 80);      // 40.0 (50% of 80)
+percent_of(8.5, 150);    // 12.75 (8.5% of 150)
 ```
 
 **Real-world:** Calculating tips, discounts, tax amounts, commissions.
@@ -272,7 +272,7 @@ percentOf(8.5, 150);    // 12.75 (8.5% of 150)
 ### What Percent
 
 ```c++
-double whatPercent(double part, double total);
+double what_percent(double part, double total);
 ```
 
 Finds what percent the part is of the total.
@@ -281,10 +281,10 @@ Finds what percent the part is of the total.
 
 **Examples:**
 ```c++
-whatPercent(25, 100);   // 25.0 (25 is 25% of 100)
-whatPercent(30, 150);   // 20.0 (30 is 20% of 150)
-whatPercent(45, 90);    // 50.0 (45 is 50% of 90)
-whatPercent(7, 35);     // 20.0 (7 is 20% of 35)
+what_percent(25, 100);   // 25.0 (25 is 25% of 100)
+what_percent(30, 150);   // 20.0 (30 is 20% of 150)
+what_percent(45, 90);    // 50.0 (45 is 50% of 90)
+what_percent(7, 35);     // 20.0 (7 is 20% of 35)
 ```
 
 **Real-world:** Grade percentages, completion rates, market share analysis.
@@ -294,7 +294,7 @@ whatPercent(7, 35);     // 20.0 (7 is 20% of 35)
 ### Percent Increase
 
 ```c++
-double percentIncrease(double original, double newValue);
+double percent_increase(double original, double newValue);
 ```
 
 Calculates the percentage increase from original to newValue.
@@ -303,10 +303,10 @@ Calculates the percentage increase from original to newValue.
 
 **Examples:**
 ```c++
-percentIncrease(50, 75);    // 50.0 (increased by 50%)
-percentIncrease(100, 150);  // 50.0 (increased by 50%)
-percentIncrease(80, 100);   // 25.0 (increased by 25%)
-percentIncrease(200, 250);  // 25.0 (increased by 25%)
+percent_increase(50, 75);    // 50.0 (increased by 50%)
+percent_increase(100, 150);  // 50.0 (increased by 50%)
+percent_increase(80, 100);   // 25.0 (increased by 25%)
+percent_increase(200, 250);  // 25.0 (increased by 25%)
 ```
 
 **Real-world:** Price increases, population growth, salary raises, profit margins.
@@ -316,7 +316,7 @@ percentIncrease(200, 250);  // 25.0 (increased by 25%)
 ### Percent Decrease
 
 ```c++
-double percentDecrease(double original, double newValue);
+double percent_decrease(double original, double newValue);
 ```
 
 Calculates the percentage decrease from original to newValue.
@@ -325,10 +325,10 @@ Calculates the percentage decrease from original to newValue.
 
 **Examples:**
 ```c++
-percentDecrease(100, 75);   // 25.0 (decreased by 25%)
-percentDecrease(200, 150);  // 25.0 (decreased by 25%)
-percentDecrease(80, 60);    // 25.0 (decreased by 25%)
-percentDecrease(50, 25);    // 50.0 (decreased by 50%)
+percent_decrease(100, 75);   // 25.0 (decreased by 25%)
+percent_decrease(200, 150);  // 25.0 (decreased by 25%)
+percent_decrease(80, 60);    // 25.0 (decreased by 25%)
+percent_decrease(50, 25);    // 50.0 (decreased by 50%)
 ```
 
 **Real-world:** Discounts, price reductions, depreciation, weight loss tracking.
@@ -474,16 +474,16 @@ median(even);       // 25.0 (average of 20 and 30)
 ### Add Fractions
 
 ```c++
-double addFractions(double num1, double den1, double num2, double den2);
+double add_fractions(double num1, double den1, double num2, double den2);
 ```
 
 Adds two fractions: (num1/den1) + (num2/den2).
 
 **Examples:**
 ```c++
-addFractions(1, 2, 1, 3);       // 0.8333... (1/2 + 1/3 = 5/6)
-addFractions(2, 5, 3, 10);      // 0.7 (2/5 + 3/10 = 7/10)
-addFractions(1, 4, 1, 4);       // 0.5 (1/4 + 1/4 = 1/2)
+add_fractions(1, 2, 1, 3);       // 0.8333... (1/2 + 1/3 = 5/6)
+add_fractions(2, 5, 3, 10);      // 0.7 (2/5 + 3/10 = 7/10)
+add_fractions(1, 4, 1, 4);       // 0.5 (1/4 + 1/4 = 1/2)
 ```
 
 **Real-world:** Recipe measurements, combining partial amounts.
@@ -493,15 +493,15 @@ addFractions(1, 4, 1, 4);       // 0.5 (1/4 + 1/4 = 1/2)
 ### Subtract Fractions
 
 ```c++
-double subtractFractions(double num1, double den1, double num2, double den2);
+double substract_fractions(double num1, double den1, double num2, double den2);
 ```
 
 Subtracts two fractions: (num1/den1) - (num2/den2).
 
 **Examples:**
 ```c++
-subtractFractions(3, 4, 1, 2);  // 0.25 (3/4 - 1/2 = 1/4)
-subtractFractions(5, 6, 1, 3);  // 0.5 (5/6 - 1/3 = 1/2)
+substract_fractions(3, 4, 1, 2);  // 0.25 (3/4 - 1/2 = 1/4)
+substract_fractions(5, 6, 1, 3);  // 0.5 (5/6 - 1/3 = 1/2)
 ```
 
 **Real-world:** Measuring remaining quantities, calculating differences.
@@ -511,15 +511,15 @@ subtractFractions(5, 6, 1, 3);  // 0.5 (5/6 - 1/3 = 1/2)
 ### Multiply Fractions
 
 ```c++
-double multiplyFractions(double num1, double den1, double num2, double den2);
+double multiply_fractions(double num1, double den1, double num2, double den2);
 ```
 
 Multiplies two fractions: (num1/den1) × (num2/den2).
 
 **Examples:**
 ```c++
-multiplyFractions(2, 3, 3, 4);  // 0.5 (2/3 × 3/4 = 1/2)
-multiplyFractions(1, 2, 1, 2);  // 0.25 (1/2 × 1/2 = 1/4)
+multiply_fractions(2, 3, 3, 4);  // 0.5 (2/3 × 3/4 = 1/2)
+multiply_fractions(1, 2, 1, 2);  // 0.25 (1/2 × 1/2 = 1/4)
 ```
 
 **Real-world:** Scaling recipes, calculating portions.
@@ -529,15 +529,15 @@ multiplyFractions(1, 2, 1, 2);  // 0.25 (1/2 × 1/2 = 1/4)
 ### Divide Fractions
 
 ```c++
-double divideFractions(double num1, double den1, double num2, double den2);
+double divide_fractions(double num1, double den1, double num2, double den2);
 ```
 
 Divides two fractions: (num1/den1) ÷ (num2/den2).
 
 **Examples:**
 ```c++
-divideFractions(1, 2, 1, 4);    // 2.0 (1/2 ÷ 1/4 = 2)
-divideFractions(3, 4, 3, 8);    // 2.0 (3/4 ÷ 3/8 = 2)
+divide_fractions(1, 2, 1, 4);    // 2.0 (1/2 ÷ 1/4 = 2)
+divide_fractions(3, 4, 3, 8);    // 2.0 (3/4 ÷ 3/8 = 2)
 ```
 
 **Real-world:** Dividing quantities, portion distribution.
@@ -549,17 +549,17 @@ divideFractions(3, 4, 3, 8);    // 2.0 (3/4 ÷ 3/8 = 2)
 ### Round to Nearest
 
 ```c++
-double roundToNearest(double n);
+double round_to_nearest(double n);
 ```
 
 Rounds to the nearest integer. Values at .5 round up.
 
 **Examples:**
 ```c++
-roundToNearest(3.2);    // 3.0
-roundToNearest(3.7);    // 4.0
-roundToNearest(3.5);    // 4.0
-roundToNearest(-2.5);   // -2.0 or -3.0 (implementation dependent)
+round_to_nearest(3.2);    // 3.0
+round_to_nearest(3.7);    // 4.0
+round_to_nearest(3.5);    // 4.0
+round_to_nearest(-2.5);   // -2.0 or -3.0 (implementation dependent)
 ```
 
 **Real-world:** Rounding prices, counting items, simplifying measurements.
@@ -569,17 +569,17 @@ roundToNearest(-2.5);   // -2.0 or -3.0 (implementation dependent)
 ### Round Up (Ceiling)
 
 ```c++
-double roundUp(double n);
+double round_up(double n);
 ```
 
 Rounds up to the next integer (ceiling function).
 
 **Examples:**
 ```c++
-roundUp(3.1);       // 4.0
-roundUp(3.9);       // 4.0
-roundUp(3.0);       // 3.0
-roundUp(-2.1);      // -2.0
+round_up(3.1);       // 4.0
+round_up(3.9);       // 4.0
+round_up(3.0);       // 3.0
+round_up(-2.1);      // -2.0
 ```
 
 **Real-world:** Calculating packages needed, minimum capacity, buffer allocation.
@@ -589,17 +589,17 @@ roundUp(-2.1);      // -2.0
 ### Round Down (Floor)
 
 ```c++
-double roundDown(double n);
+double round_down(double n);
 ```
 
 Rounds down to the previous integer (floor function).
 
 **Examples:**
 ```c++
-roundDown(3.1);     // 3.0
-roundDown(3.9);     // 3.0
-roundDown(3.0);     // 3.0
-roundDown(-2.1);    // -3.0
+round_down(3.1);     // 3.0
+round_down(3.9);     // 3.0
+round_down(3.0);     // 3.0
+round_down(-2.1);    // -3.0
 ```
 
 **Real-world:** Complete sets, whole units available, truncating values.
@@ -609,17 +609,17 @@ roundDown(-2.1);    // -3.0
 ### Round to Decimal Places
 
 ```c++
-double roundToDecimalPlaces(double n, int places);
+double round_to_decimal_places(double n, int places);
 ```
 
 Rounds to a specified number of decimal places.
 
 **Examples:**
 ```c++
-roundToDecimalPlaces(3.14159, 2);   // 3.14
-roundToDecimalPlaces(2.5678, 1);    // 2.6
-roundToDecimalPlaces(100.567, 0);   // 101.0
-roundToDecimalPlaces(1.2345, 3);    // 1.235
+round_to_decimal_places(3.14159, 2);   // 3.14
+round_to_decimal_places(2.5678, 1);    // 2.6
+round_to_decimal_places(100.567, 0);   // 101.0
+round_to_decimal_places(1.2345, 3);    // 1.235
 ```
 
 **Real-world:** Currency (2 decimal places), precision measurements, display formatting.
@@ -631,17 +631,17 @@ roundToDecimalPlaces(1.2345, 3);    // 1.235
 ### Is Even
 
 ```c++
-bool isEven(int n);
+bool is_even(int n);
 ```
 
 Checks if a number is even (divisible by 2).
 
 **Examples:**
 ```c++
-isEven(4);      // true
-isEven(7);      // false
-isEven(0);      // true
-isEven(-6);     // true
+is_even(4);      // true
+is_even(7);      // false
+is_even(0);      // true
+is_even(-6);     // true
 ```
 
 **Real-world:** Pairing items, determining patterns, scheduling rotations.
@@ -651,17 +651,17 @@ isEven(-6);     // true
 ### Is Odd
 
 ```c++
-bool isOdd(int n);
+bool is_odd(int n);
 ```
 
 Checks if a number is odd (not divisible by 2).
 
 **Examples:**
 ```c++
-isOdd(5);       // true
-isOdd(8);       // false
-isOdd(1);       // true
-isOdd(-3);      // true
+is_odd(5);       // true
+is_odd(8);       // false
+is_odd(1);       // true
+is_odd(-3);      // true
 ```
 
 **Real-world:** Alternating patterns, parity checks, game logic.
@@ -671,18 +671,18 @@ isOdd(-3);      // true
 ### Is Prime
 
 ```c++
-bool isPrime(int n);
+bool is_prime(int n);
 ```
 
 Tests whether a number is prime (only divisible by 1 and itself).
 
 **Examples:**
 ```c++
-isPrime(2);     // true (smallest prime)
-isPrime(17);    // true
-isPrime(20);    // false (divisible by 2, 4, 5, 10)
-isPrime(1);     // false (1 is not prime by definition)
-isPrime(29);    // true
+is_prime(2);     // true (smallest prime)
+is_prime(17);    // true
+is_prime(20);    // false (divisible by 2, 4, 5, 10)
+is_prime(1);     // false (1 is not prime by definition)
+is_prime(29);    // true
 ```
 
 **Real-world:** Cryptography, hash functions, mathematical research.
@@ -692,17 +692,17 @@ isPrime(29);    // true
 ### Greatest Common Divisor (GCD)
 
 ```c++
-int greatestCommonDivisor(int a, int b);
+int greatest_common_divisor(int a, int b);
 ```
 
 Finds the largest number that divides both a and b evenly.
 
 **Examples:**
 ```c++
-greatestCommonDivisor(48, 18);  // 6
-greatestCommonDivisor(100, 50); // 50
-greatestCommonDivisor(17, 19);  // 1 (coprime numbers)
-greatestCommonDivisor(24, 36);  // 12
+greatest_common_divisor(48, 18);  // 6
+greatest_common_divisor(100, 50); // 50
+greatest_common_divisor(17, 19);  // 1 (coprime numbers)
+greatest_common_divisor(24, 36);  // 12
 ```
 
 **Real-world:** Simplifying fractions, tile arrangements, gear ratios.
@@ -712,17 +712,17 @@ greatestCommonDivisor(24, 36);  // 12
 ### Least Common Multiple (LCM)
 
 ```c++
-int leastCommonMultiple(int a, int b);
+int least_common_multiple(int a, int b);
 ```
 
 Finds the smallest positive number that is a multiple of both a and b.
 
 **Examples:**
 ```c++
-leastCommonMultiple(4, 6);      // 12
-leastCommonMultiple(3, 5);      // 15
-leastCommonMultiple(12, 18);    // 36
-leastCommonMultiple(7, 14);     // 14
+least_common_multiple(4, 6);      // 12
+least_common_multiple(3, 5);      // 15
+least_common_multiple(12, 18);    // 36
+least_common_multiple(7, 14);     // 14
 ```
 
 **Real-world:** Scheduling cycles, pattern repetition, synchronization problems.
@@ -734,7 +734,7 @@ leastCommonMultiple(7, 14);     // 14
 ### Distance 2D
 
 ```c++
-double distance2D(double x1, double y1, double x2, double y2);
+double distance_2D(double x1, double y1, double x2, double y2);
 ```
 
 Calculates the Euclidean distance between two points in 2D space.
@@ -743,10 +743,10 @@ Calculates the Euclidean distance between two points in 2D space.
 
 **Examples:**
 ```c++
-distance2D(0, 0, 3, 4);         // 5.0
-distance2D(1, 1, 4, 5);         // 5.0
-distance2D(-2, -3, 1, 1);       // 5.0
-distance2D(0, 0, 1, 1);         // 1.414... (√2)
+distance_2D(0, 0, 3, 4);         // 5.0
+distance_2D(1, 1, 4, 5);         // 5.0
+distance_2D(-2, -3, 1, 1);       // 5.0
+distance_2D(0, 0, 1, 1);         // 1.414... (√2)
 ```
 
 **Real-world:** GPS distance, game coordinates, mapping applications.
@@ -778,7 +778,7 @@ pythagorean(6, 8);      // 10.0
 ### Simple Interest
 
 ```c++
-double simpleInterest(double principal, double rate, double time);
+double simple_interest(double principal, double rate, double time);
 ```
 
 Calculates simple interest on a principal amount.
@@ -792,14 +792,36 @@ Calculates simple interest on a principal amount.
 
 **Examples:**
 ```c++
-simpleInterest(1000, 0.05, 2);      // 100.0 ($1000 at 5% for 2 years)
-simpleInterest(5000, 0.03, 1);      // 150.0 ($5000 at 3% for 1 year)
-simpleInterest(10000, 0.04, 3);     // 1200.0 ($10000 at 4% for 3 years)
+simple_interest(1000, 0.05, 2);      // 100.0 ($1000 at 5% for 2 years)
+simple_interest(5000, 0.03, 1);      // 150.0 ($5000 at 3% for 1 year)
+simple_interest(10000, 0.04, 3);     // 1200.0 ($10000 at 4% for 3 years)
 ```
 
 **Real-world:** Loan interest, savings accounts, investment returns.
 
 ---
+
+## Sequences
+
+### Arithmetic Sequences
+
+```c++
+void sequence(uint_t first, uint_t diff, unsigned int terms,
+                        std::vector<uint_t>& result);
+uint_t sequence_sum(uint_t first, uint_t last, unsigned int terms);
+uint_t nth_term(uint_t first, uint_t diff, unsigned int n);
+```
+
+**Examples:**
+```c++
+std::vector<uint_t> seq;
+sequence(2, 3, 5, seq);  // {2, 5, 8, 11, 14}
+
+sequence_sum(2, 14, 5);           // 40
+nth_term(2, 3, 5);       // 14
+```
+
+**Real-world:** Savings, Taxi Fares, Salary.
 
 ## Complete Examples
 
@@ -877,12 +899,12 @@ int main() {
     int a = 48, b = 18;
 
     std::cout << "Number Theory for " << a << " and " << b << "\n";
-    std::cout << "GCD: " << imeth::Arithmetic::greatestCommonDivisor(a, b) << "\n";
-    std::cout << "LCM: " << imeth::Arithmetic::leastCommonMultiple(a, b) << "\n";
+    std::cout << "GCD: " << imeth::Arithmetic::greatest_common_divisor(a, b) << "\n";
+    std::cout << "LCM: " << imeth::Arithmetic::least_common_multiple(a, b) << "\n";
 
     std::cout << "\nPrime numbers from 1 to 20:\n";
     for (int i = 1; i <= 20; i++) {
-        if (imeth::Arithmetic::isPrime(i)) {
+        if (imeth::Arithmetic::is_prime(i)) {
             std::cout << i << " ";
         }
     }
@@ -901,15 +923,15 @@ int main() {
 #include <iostream>
 
 int main() {
-    double originalPrice = 100.0;
-    double salePrice = 75.0;
+    double original_price = 100.0;
+    double sale_price = 75.0;
 
-    double discount = imeth::Arithmetic::percentOf(20, originalPrice);
-    double decrease = imeth::Arithmetic::percentDecrease(originalPrice, salePrice);
+    double discount = imeth::Arithmetic::percent_of(20, original_price);
+    double decrease = imeth::Arithmetic::percent_decrease(original_price, sale_price);
 
-    std::cout << "Original Price: $" << originalPrice << "\n";
+    std::cout << "Original Price: $" << original_price << "\n";
     std::cout << "20% discount: $" << discount << "\n";
-    std::cout << "Sale Price: $" << salePrice << "\n";
+    std::cout << "Sale Price: $" << sale_price << "\n";
     std::cout << "Percent saved: " << decrease << "%\n";
 
     return 0;
@@ -929,7 +951,7 @@ int main() {
     double city1_x = 0, city1_y = 0;
     double city2_x = 3, city2_y = 4;
 
-    double distance = imeth::Arithmetic::distance2D(city1_x, city1_y,
+    double distance = imeth::Arithmetic::distance_2D(city1_x, city1_y,
                                                      city2_x, city2_y);
 
     std::cout << "Distance between cities: " << distance << " km\n";
@@ -959,17 +981,17 @@ int main() {
 
 ## Quick Reference
 
-| Operation Type | Function | Use Case |
-|---------------|----------|----------|
-| Basic math | `add`, `subtract`, `multiply`, `divide` | Calculations |
-| Powers | `power`, `squareRoot`, `cubeRoot` | Exponents, roots |
-| Statistics | `average`, `median`, `sum` | Data analysis |
-| Percentages | `percentOf`, `whatPercent` | Discounts, rates |
-| Rounding | `roundToNearest`, `roundUp`, `roundDown` | Display, precision |
-| Number theory | `isPrime`, `greatestCommonDivisor` | Math problems |
-| Geometry | `distance2D`, `pythagorean` | Coordinates, triangles |
-| Temperature | `celsiusToFahrenheit` | Conversions |
-| Finance | `simpleInterest` | Loans, investments |
+| Operation Type | Function                               | Use Case               |
+|----------------|----------------------------------------|------------------------|
+| Basic math     | `add`, `subtract`, `multiply`, `divide` | Calculations           |
+| Powers         | `power`, `square_root`, `cube_root`    | Exponents, roots       |
+| Statistics     | `average`, `median`, `sum`             | Data analysis          |
+| Percentages    | `percent_of`, `what_percent`           | Discounts, rates       |
+| Rounding       | `round_to_nearest`, `round_up`, `round_down` | Display, precision     |
+| Number theory  | `is_prime`, `greatest_common_divisor`  | Math problems          |
+| Geometry       | `distance_2D`, `pythagorean`           | Coordinates, triangles |
+| Finance        | `simple_interest`                      | Loans, investments     |
+| Sequences      | `sequence`, `sequence_sum`, `nth_term` | Savings, salary        |
 
 ---
 
@@ -979,7 +1001,7 @@ int main() {
 ```c++
 double price = 50.0;
 double taxRate = 0.08;  // 8% tax
-double tax = imeth::Arithmetic::percentOf(taxRate * 100, price);
+double tax = imeth::Arithmetic::percent_of(taxRate * 100, price);
 double total = imeth::Arithmetic::add(price, tax);
 ```
 
@@ -987,20 +1009,20 @@ double total = imeth::Arithmetic::add(price, tax);
 ```c++
 std::vector<double> scores = {85, 90, 78, 92};
 double avg = imeth::Arithmetic::average(scores);
-double rounded = imeth::Arithmetic::roundToNearest(avg);
+double rounded = imeth::Arithmetic::round_to_nearest(avg);
 ```
 
 ### Distance Calculation
 ```c++
-double dist = imeth::Arithmetic::distance2D(x1, y1, x2, y2);
-double roundedDist = imeth::Arithmetic::roundToDecimalPlaces(dist, 2);
+double dist = imeth::Arithmetic::distance_2D(x1, y1, x2, y2);
+double rounded_dist = imeth::Arithmetic::round_to_decimal_places(dist, 2);
 ```
 
 ### Fraction Simplification
 ```c++
 int num = 48, den = 18;
-int gcd = imeth::Arithmetic::greatestCommonDivisor(num, den);
-int simplifiedNum = num / gcd;  // 8
-int simplifiedDen = den / gcd;  // 3
+int gcd = imeth::Arithmetic::greatest_common_divisor(num, den);
+int simplified_num = num / gcd;  // 8
+int simplified_den = den / gcd;  // 3
 // Result: 48/18 = 8/3
 ```

@@ -706,27 +706,6 @@ void cartesian_product(const std::vector<T>& set1, const std::vector<T>& set2,
 ---
 
 ## Sequences
-
-### Arithmetic Sequences
-
-```c++
-void arithmetic_sequence(uint_t first, uint_t diff, unsigned int terms,
-                        std::vector<uint_t>& result);
-uint_t arithmetic_sum(uint_t first, uint_t last, unsigned int terms);
-uint_t nth_term_arithmetic(uint_t first, uint_t diff, unsigned int n);
-```
-
-**Examples:**
-```c++
-std::vector<uint_t> seq;
-arithmetic_sequence(2, 3, 5, seq);  // {2, 5, 8, 11, 14}
-
-arithmetic_sum(2, 14, 5);           // 40
-nth_term_arithmetic(2, 3, 5);       // 14
-```
-
----
-
 ### Geometric Sequences
 
 ```c++
