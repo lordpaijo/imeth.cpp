@@ -5,7 +5,7 @@
 namespace imeth {
 
 // Conversion
-std::string Binary::fromDecimal(int decimal) {
+std::string Binary::from_decimal(int decimal) {
     if (decimal == 0) return "0";
 
     const bool negative = decimal < 0;
@@ -21,7 +21,7 @@ std::string Binary::fromDecimal(int decimal) {
     return result;
 }
 
-int Binary::toDecimal(const std::string& binary) {
+int Binary::to_decimal(const std::string& binary) {
     if (binary.empty()) {
         throw std::invalid_argument("Empty binary string");
     }
@@ -46,43 +46,43 @@ int Binary::toDecimal(const std::string& binary) {
 
 // Arithmetic operations
 std::string Binary::add(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 + dec2);
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 + dec2);
 }
 
 std::string Binary::subtract(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 - dec2);
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 - dec2);
 }
 
 std::string Binary::multiply(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 * dec2);
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 * dec2);
 }
 
 // Bitwise operations
-std::string Binary::bitwiseAND(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 & dec2);
+std::string Binary::bitwise_AND(const std::string& a, const std::string& b) {
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 & dec2);
 }
 
-std::string Binary::bitwiseOR(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 | dec2);
+std::string Binary::bitwise_OR(const std::string& a, const std::string& b) {
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 | dec2);
 }
 
-std::string Binary::bitwiseXOR(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 ^ dec2);
+std::string Binary::bitwise_XOR(const std::string& a, const std::string& b) {
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 ^ dec2);
 }
 
-std::string Binary::bitwiseNOT(const std::string& binary) {
+std::string Binary::bitwise_NOT(const std::string& binary) {
     // For simplicity, flip all bits in the string
     std::string result = binary;
     for (char& c : result) {
@@ -92,18 +92,18 @@ std::string Binary::bitwiseNOT(const std::string& binary) {
     return result;
 }
 
-std::string Binary::leftShift(const std::string& binary, int positions) {
-    const int decimal = toDecimal(binary);
-    return fromDecimal(decimal << positions);
+std::string Binary::left_shift(const std::string& binary, int positions) {
+    const int decimal = to_decimal(binary);
+    return from_decimal(decimal << positions);
 }
 
-std::string Binary::rightShift(const std::string& binary, int positions) {
-    int decimal = toDecimal(binary);
-    return fromDecimal(decimal >> positions);
+std::string Binary::right_shift(const std::string& binary, int positions) {
+    int decimal = to_decimal(binary);
+    return from_decimal(decimal >> positions);
 }
 
 // Utility
-bool Binary::isValid(const std::string& binary) {
+bool Binary::is_valid(const std::string& binary) {
     if (binary.empty()) return false;
 
     size_t start = (binary[0] == '-') ? 1 : 0;
@@ -115,12 +115,12 @@ bool Binary::isValid(const std::string& binary) {
     return true;
 }
 
-std::string Binary::padLeft(const std::string& binary, size_t length) {
+std::string Binary::pad_left(const std::string& binary, size_t length) {
     if (binary.length() >= length) return binary;
     return std::string(length - binary.length(), '0') + binary;
 }
 
-int Binary::countOnes(const std::string& binary) {
+int Binary::count_ones(const std::string& binary) {
     int count = 0;
     for (const char c : binary) {
         if (c == '1') count++;
@@ -128,7 +128,7 @@ int Binary::countOnes(const std::string& binary) {
     return count;
 }
 
-int Binary::countZeros(const std::string& binary) {
+int Binary::count_zeros(const std::string& binary) {
     int count = 0;
     for (const char c : binary) {
         if (c == '0') count++;

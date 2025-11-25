@@ -7,7 +7,7 @@
 namespace imeth {
 
 // Helper functions
-int Hexadecimal::charToDigit(char c) {
+int Hexadecimal::char_to_digit(char c) {
     c = std::toupper(c);
     if (c >= '0' && c <= '9') {
         return c - '0';
@@ -18,7 +18,7 @@ int Hexadecimal::charToDigit(char c) {
     throw std::invalid_argument("Invalid hexadecimal character");
 }
 
-char Hexadecimal::digitToChar(const int digit) {
+char Hexadecimal::digit_to_char(const int digit) {
     if (digit < 0 || digit > 15) {
         throw std::invalid_argument("Digit out of range");
     }
@@ -29,7 +29,7 @@ char Hexadecimal::digitToChar(const int digit) {
 }
 
 // Conversion
-std::string Hexadecimal::fromDecimal(int decimal) {
+std::string Hexadecimal::from_decimal(int decimal) {
     if (decimal == 0) return "0";
 
     bool negative = decimal < 0;
@@ -37,7 +37,7 @@ std::string Hexadecimal::fromDecimal(int decimal) {
 
     std::string result = "";
     while (decimal > 0) {
-        result = digitToChar(decimal % 16) + result;
+        result = digit_to_char(decimal % 16) + result;
         decimal /= 16;
     }
 
@@ -45,7 +45,7 @@ std::string Hexadecimal::fromDecimal(int decimal) {
     return result;
 }
 
-int Hexadecimal::toDecimal(const std::string& hex) {
+int Hexadecimal::to_decimal(const std::string& hex) {
     if (hex.empty()) {
         throw std::invalid_argument("Empty hexadecimal string");
     }
@@ -57,7 +57,7 @@ int Hexadecimal::toDecimal(const std::string& hex) {
     int power = 1;
 
     for (int i = hex.length() - 1; i >= static_cast<int>(start); --i) {
-        int digit = charToDigit(hex[i]);
+        int digit = char_to_digit(hex[i]);
         result += digit * power;
         power *= 16;
     }
@@ -67,25 +67,25 @@ int Hexadecimal::toDecimal(const std::string& hex) {
 
 // Arithmetic operations
 std::string Hexadecimal::add(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 + dec2);
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 + dec2);
 }
 
 std::string Hexadecimal::subtract(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 - dec2);
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 - dec2);
 }
 
 std::string Hexadecimal::multiply(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 * dec2);
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 * dec2);
 }
 
 // Utility
-bool Hexadecimal::isValid(const std::string& hex) {
+bool Hexadecimal::is_valid(const std::string& hex) {
     if (hex.empty()) return false;
 
     size_t start = (hex[0] == '-') ? 1 : 0;
@@ -98,19 +98,19 @@ bool Hexadecimal::isValid(const std::string& hex) {
     return true;
 }
 
-std::string Hexadecimal::toUpperCase(const std::string& hex) {
+std::string Hexadecimal::to_upper_case(const std::string& hex) {
     std::string result = hex;
     std::ranges::transform(result, result.begin(), ::toupper);
     return result;
 }
 
-std::string Hexadecimal::toLowerCase(const std::string& hex) {
+std::string Hexadecimal::to_lower_case(const std::string& hex) {
     std::string result = hex;
     std::ranges::transform(result, result.begin(), ::tolower);
     return result;
 }
 
-std::string Hexadecimal::padLeft(const std::string& hex, size_t length) {
+std::string Hexadecimal::pad_left(const std::string& hex, size_t length) {
     if (hex.length() >= length) return hex;
     return std::string(length - hex.length(), '0') + hex;
 }

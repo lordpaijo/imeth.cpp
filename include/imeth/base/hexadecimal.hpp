@@ -5,8 +5,8 @@ namespace imeth {
 class Hexadecimal {
 public:
     // Conversion
-    static std::string fromDecimal(int decimal);
-    static int toDecimal(const std::string& hex);
+    static std::string from_decimal(int decimal);
+    static int to_decimal(const std::string& hex);
 
     // Arithmetic operations
     static std::string add(const std::string& a, const std::string& b);
@@ -14,13 +14,13 @@ public:
     static std::string multiply(const std::string& a, const std::string& b);
 
     // Utility
-    static bool isValid(const std::string& hex);
-    static std::string toUpperCase(const std::string& hex);
-    static std::string toLowerCase(const std::string& hex);
-    static std::string padLeft(const std::string& hex, size_t length);
+    static bool is_valid(const std::string& hex);
+    static std::string to_upper_case(const std::string& hex);
+    static std::string to_lower_case(const std::string& hex);
+    static std::string pad_left(const std::string& hex, size_t length);
 
 private:
-    static int charToDigit(char c);
-    static char digitToChar(int digit);
+    static int char_to_digit(char c);
+    static char digit_to_char(int digit);
 };
 } // namespace imeth
