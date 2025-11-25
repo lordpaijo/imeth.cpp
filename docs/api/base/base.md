@@ -17,41 +17,41 @@ The `Base` class is a general-purpose base converter that works with any base fr
 ### FROM Decimal TO Other Bases
 
 ```c++
-static std::string decimalToBinary(int decimal);
-static std::string decimalToTrinary(int decimal);
-static std::string decimalToOctal(int decimal);
-static std::string decimalToHexadecimal(int decimal);
-static std::string decimalToBase(int decimal, int base);
+static std::string decimal_to_binary(int decimal);
+static std::string decimal_to_trinary(int decimal);
+static std::string decimal_to_octal(int decimal);
+static std::string decimal_to_hexadecimal(int decimal);
+static std::string decimal_to_base(int decimal, int base);
 ```
 
 **Examples:**
 ```c++
-Base::decimalToBinary(42);        // "101010"
-Base::decimalToTrinary(42);       // "1120"
-Base::decimalToOctal(42);         // "52"
-Base::decimalToHexadecimal(42);   // "2A"
-Base::decimalToBase(42, 5);       // "132" (base 5)
-Base::decimalToBase(100, 12);     // "84" (base 12)
+Base::decimal_to_binary(42);        // "101010"
+Base::decimal_to_trinary(42);       // "1120"
+Base::decimal_to_octal(42);         // "52"
+Base::decimal_to_hexadecimal(42);   // "2A"
+Base::decimal_to_base(42, 5);       // "132" (base 5)
+Base::decimal_to_base(100, 12);     // "84" (base 12)
 ```
 
 ### FROM Other Bases TO Decimal
 
 ```c++
-static int binaryToDecimal(const std::string& binary);
-static int trinaryToDecimal(const std::string& trinary);
-static int octalToDecimal(const std::string& octal);
-static int hexadecimalToDecimal(const std::string& hex);
-static int baseToDecimal(const std::string& number, int base);
+static int binary_to_decimal(const std::string& binary);
+static int trinary_to_decimal(const std::string& trinary);
+static int octal-to_decimal(const std::string& octal);
+static int hexadecimal_to_decimal(const std::string& hex);
+static int base_to_decimal(const std::string& number, int base);
 ```
 
 **Examples:**
 ```c++
-Base::binaryToDecimal("101010");      // 42
-Base::trinaryToDecimal("1120");       // 42
-Base::octalToDecimal("52");           // 42
-Base::hexadecimalToDecimal("2A");     // 42
-Base::baseToDecimal("132", 5);        // 42 (from base 5)
-Base::baseToDecimal("84", 12);        // 100 (from base 12)
+Base::binary_to_decimal("101010");      // 42
+Base::trinary_to_decimal("1120");       // 42
+Base::octal-to_decimal("52");           // 42
+Base::hexadecimal_to_decimal("2A");     // 42
+Base::base_to_decimal("132", 5);        // 42 (from base 5)
+Base::base_to_decimal("84", 12);        // 100 (from base 12)
 ```
 
 ## Direct Base-to-Base Conversion
@@ -73,19 +73,19 @@ Base::convert("123", 5, 12);      // "32" (base 5 to base 12)
 ## Arithmetic in Different Bases
 
 ```c++
-static std::string addInBase(const std::string& num1, const std::string& num2, int base);
-static std::string subtractInBase(const std::string& num1, const std::string& num2, int base);
-static std::string multiplyInBase(const std::string& num1, const std::string& num2, int base);
+static std::string add_in_base(const std::string& num1, const std::string& num2, int base);
+static std::string substract_in_base(const std::string& num1, const std::string& num2, int base);
+static std::string multiply_in_base(const std::string& num1, const std::string& num2, int base);
 ```
 
 Perform arithmetic operations directly in any base.
 
 **Examples:**
 ```c++
-Base::addInBase("1010", "1100", 2);      // "10110" (binary addition)
-Base::addInBase("12", "23", 5);          // "40" (base 5 addition)
-Base::multiplyInBase("12", "3", 8);      // "36" (octal multiplication)
-Base::subtractInBase("100", "11", 3);    // "12" (trinary subtraction)
+Base::add_in_base("1010", "1100", 2);      // "10110" (binary addition)
+Base::add_in_base("12", "23", 5);          // "40" (base 5 addition)
+Base::multiply_in_base("12", "3", 8);      // "36" (octal multiplication)
+Base::substract_in_base("100", "11", 3);    // "12" (trinary subtraction)
 ```
 
 ## Utility Functions
@@ -93,31 +93,31 @@ Base::subtractInBase("100", "11", 3);    // "12" (trinary subtraction)
 ### Validation
 
 ```c++
-static bool isValidInBase(const std::string& number, int base);
+static bool is_valid_in_base(const std::string& number, int base);
 ```
 
 Check if a string is a valid number in a given base.
 
 **Examples:**
 ```c++
-Base::isValidInBase("123", 3);     // false (3 is not valid in base 3)
-Base::isValidInBase("123", 5);     // true
-Base::isValidInBase("FF", 16);     // true
-Base::isValidInBase("GG", 16);     // false (G is not valid in hex)
+Base::is_valid_in_base("123", 3);     // false (3 is not valid in base 3)
+Base::is_valid_in_base("123", 5);     // true
+Base::is_valid_in_base("FF", 16);     // true
+Base::is_valid_in_base("GG", 16);     // false (G is not valid in hex)
 ```
 
 ### Case Conversion
 
 ```c++
-static std::string toUpperCase(const std::string& str);
+static std::string to_upper_case(const std::string& str);
 ```
 
 Convert a base string to uppercase (useful for bases > 10).
 
 **Examples:**
 ```c++
-Base::toUpperCase("2a");    // "2A"
-Base::toUpperCase("abc");   // "ABC"
+Base::to_upper_case("2a");    // "2A"
+Base::to_upper_case("abc");   // "ABC"
 ```
 
 ## Supported Bases
@@ -142,14 +142,14 @@ std::string octal = Base::convert("FF", 16, 8);       // "377"
 ### Custom Bases
 ```c++
 // Working with unusual bases
-std::string base7 = Base::decimalToBase(100, 7);   // "202"
-int decimal = Base::baseToDecimal("202", 7);       // 100
+std::string base7 = Base::decimal_to_base(100, 7);   // "202"
+int decimal = Base::base_to_decimal("202", 7);       // 100
 ```
 
 ### Base Arithmetic
 ```c++
 // Do math without converting to decimal
-std::string result = Base::addInBase("1234", "567", 8);  // "2023" (in octal)
+std::string result = Base::add_in_base("1234", "567", 8);  // "2023" (in octal)
 ```
 
 ## Notes

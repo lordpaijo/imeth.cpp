@@ -5,7 +5,7 @@
 namespace imeth {
 
 // Conversion
-std::string Octal::fromDecimal(int decimal) {
+std::string Octal::from_decimal(int decimal) {
     if (decimal == 0) return "0";
 
     bool negative = decimal < 0;
@@ -21,7 +21,7 @@ std::string Octal::fromDecimal(int decimal) {
     return result;
 }
 
-int Octal::toDecimal(const std::string& octal) {
+int Octal::to_decimal(const std::string& octal) {
     if (octal.empty()) {
         throw std::invalid_argument("Empty octal string");
     }
@@ -46,25 +46,25 @@ int Octal::toDecimal(const std::string& octal) {
 
 // Arithmetic operations
 std::string Octal::add(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 + dec2);
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 + dec2);
 }
 
 std::string Octal::subtract(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 - dec2);
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 - dec2);
 }
 
 std::string Octal::multiply(const std::string& a, const std::string& b) {
-    const int dec1 = toDecimal(a);
-    const int dec2 = toDecimal(b);
-    return fromDecimal(dec1 * dec2);
+    const int dec1 = to_decimal(a);
+    const int dec2 = to_decimal(b);
+    return from_decimal(dec1 * dec2);
 }
 
 // Utility
-bool Octal::isValid(const std::string& octal) {
+bool Octal::is_valid(const std::string& octal) {
     if (octal.empty()) return false;
 
     size_t start = (octal[0] == '-') ? 1 : 0;
@@ -76,7 +76,7 @@ bool Octal::isValid(const std::string& octal) {
     return true;
 }
 
-std::string Octal::padLeft(const std::string& octal, size_t length) {
+std::string Octal::pad_left(const std::string& octal, size_t length) {
     if (octal.length() >= length) return octal;
     return std::string(length - octal.length(), '0') + octal;
 }
