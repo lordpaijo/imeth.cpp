@@ -14,8 +14,8 @@ namespace Arithmetic {
 
     // Power and Roots
     double power(double base, int exponent);
-    double squareRoot(double n);
-    double cubeRoot(double n);
+    double square_root(double n);
+    double cube_root(double n);
 
     // Absolute Value and Sign
     double absolute(double n);
@@ -24,13 +24,13 @@ namespace Arithmetic {
 
     // Remainders and Divisibility
     int remainder(int a, int b);
-    bool isDivisible(int a, int b);
+    bool is_divisible(int a, int b);
 
     // Percentages
-    double percentOf(double percent, double total);
-    double whatPercent(double part, double total);
-    double percentIncrease(double original, double newValue);
-    double percentDecrease(double original, double newValue);
+    double percent_of(double percent, double total);
+    double what_percent(double part, double total);
+    double percent_increase(double original, double newValue);
+    double percent_decrease(double original, double newValue);
 
     // Averages and Statistics
     double average(const std::vector<double>& numbers);
@@ -41,30 +41,30 @@ namespace Arithmetic {
     double median(std::vector<double> numbers); // Note: not const because we sort
 
     // Fractions (simplified as doubles)
-    double addFractions(double num1, double den1, double num2, double den2);
-    double subtractFractions(double num1, double den1, double num2, double den2);
-    double multiplyFractions(double num1, double den1, double num2, double den2);
-    double divideFractions(double num1, double den1, double num2, double den2);
+    double add_fractions(double num1, double den1, double num2, double den2);
+    double subtract_fractions(double num1, double den1, double num2, double den2);
+    double multiply_fractions(double num1, double den1, double num2, double den2);
+    double divide_fractions(double num1, double den1, double num2, double den2);
 
     // Rounding
-    double roundToNearest(double n);
-    double roundUp(double n);
-    double roundDown(double n);
-    double roundToDecimalPlaces(double n, int places);
+    double round_to_nearest(double n);
+    double round_up(double n);
+    double round_down(double n);
+    double round_to_decimalPlaces(double n, int places);
 
     // Number Properties
-    bool isEven(int n);
-    bool isOdd(int n);
-    bool isPrime(int n);
-    int greatestCommonDivisor(int a, int b);
-    int leastCommonMultiple(int a, int b);
+    bool is_even(int n);
+    bool is_odd(int n);
+    bool is_prime(int n);
+    int greatest_common_divisor(int a, int b);
+    int least_common_multiple(int a, int b);
 
     // Distance and Pythagorean
-    double distance2D(double x1, double y1, double x2, double y2);
+    double distance_2D(double x1, double y1, double x2, double y2);
     double pythagorean(double a, double b); // Returns hypotenuse c
 
     // Simple Interest
-    double simpleInterest(double principal, double rate, double time);
+    double simple_interest(double principal, double rate, double time);
 
     // Sequences
     void sequence(uint_t first, uint_t diff, unsigned int terms,
