@@ -17,14 +17,15 @@
 
 
 <b>A lightweight C++ math library for exploring computational mathematics while testing the limits of the author's C++ skills (and sanity).</b><br/>
-<i>**I + METH** – Because I'm high on math equations like a guy high on meth.</i><br/>
 
+<i>**I + METH** – Because I'm high on math equations like a guy high on meth.</i><br/>
 </div>
 
 ## Features
 
 - **Arithmetic Operations**: Basic arithmetic calculations
 - **Linear Algebra**: Equation solving, matrix operations, and more
+- **Combinatorics**: Combinatorics operations and sequences.
 - **Shape Calculations**: 2D and 3D geometric operations
 - **Base Conversions and Operations**: Convert and operate on numbers between different bases
 - **Modular Design**: Clean, organized API with namespace separation
