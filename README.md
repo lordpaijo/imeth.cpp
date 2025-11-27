@@ -1,8 +1,25 @@
-# imeth
+<div align="center">
+<h1>imeth</h1>
+<div>
+    <a href="https://github.com/lordpaijo/imeth.cpp/actions/workflows/cmake-multi-platform.yml">
+      <img src="https://img.shields.io/github/actions/workflow/status/lordpaijo/imeth.cpp/cmake-multi-platform.yml?branch=main&style=flat-square&logo=windows&label=windows" alt="windows-ci" />
+    </a>
+    <a href="https://github.com/lordpaijo/imeth.cpp/actions/workflows/cmake-multi-platform.yml">
+      <img src="https://img.shields.io/github/actions/workflow/status/lordpaijo/imeth.cpp/cmake-multi-platform.yml?branch=main&style=flat-square&logo=linux&label=linux" alt="linux-ci" />
+    </a>
+    <a href="https://github.com/lordpaijo/imeth.cpp/actions/workflows/cmake-multi-platform.yml">
+      <img src="https://img.shields.io/github/actions/workflow/status/lordpaijo/imeth.cpp/cmake-multi-platform.yml?branch=main&style=flat-square&logo=apple&label=macOS" alt="macos-ci" />
+    </a>
+    <a href="https://github.com/lordpaijo/imeth.cpp/releases">
+      <img src="https://img.shields.io/github/release/lordpaijo/imeth.cpp.svg?style=flat-square" alt="Github All Releases" />
+    </a>
+</div>
 
-**I + METH** – Because I'm high on math equations like a guy high on meth.
 
-A lightweight C++ math library for exploring computational mathematics while testing the limits of the author's C++ skills (and sanity).
+<b>A lightweight C++ math library for exploring computational mathematics while testing the limits of the author's C++ skills (and sanity).</b><br/>
+<i>**I + METH** – Because I'm high on math equations like a guy high on meth.</i><br/>
+
+</div>
 
 ## Features
 
